@@ -1,0 +1,55 @@
+<header class="nav-shell" data-nav>
+  <div class="nav-shell__inner">
+    <a class="nav-logo" href="{{ "/" | relURL }}" aria-label="Bearo Casino">
+      <span class="nav-logo__icon" aria-hidden="true">
+        <picture>
+          <source srcset="{{ "img/logo-bearo.webp" | relURL }}" type="image/webp">
+          <img src="{{ "img/logo-bearo.png" | relURL }}"
+               alt="" width="44" height="44" loading="eager" decoding="async">
+        </picture>
+      </span>
+      <span class="nav-logo__word">
+        <strong>Bearo</strong><em>Casino</em>
+      </span>
+    </a>
+
+    <nav class="nav-links" aria-label="Glavna navigacija">
+      <ul>
+        {{ range site.Menus.main }}
+          <li><a href="{{ .URL }}" class="nav-link">{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn--ghost" href="#prijava">Prijava</a>
+      <a class="btn btn--primary btn--shine" href="#registracija">
+        <span>Registracija</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Compact menu for mobile is a CSS-only details/summary fold -->
+  <details class="nav-mobile">
+    <summary aria-label="Meni">
+      <span class="nav-mobile__bar"></span>
+      <span class="nav-mobile__bar"></span>
+      <span class="nav-mobile__bar"></span>
+    </summary>
+    <div class="nav-mobile__panel">
+      <ul>
+        {{ range site.Menus.main }}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+      <div class="nav-mobile__cta">
+        <a class="btn btn--ghost btn--block" href="#prijava">Prijava</a>
+        <a class="btn btn--primary btn--block" href="#registracija">Registracija</a>
+      </div>
+    </div>
+  </details>
+</header>

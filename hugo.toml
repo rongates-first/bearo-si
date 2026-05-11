@@ -1,0 +1,100 @@
+baseURL = "https://bearo.si/"
+languageCode = "sl-SI"
+defaultContentLanguage = "sl"
+title = "Bearo Casino | Bonusi, igralni avtomati in live casino"
+enableRobotsTXT = true
+enableGitInfo = false
+
+# Build / output
+[outputs]
+home = ["HTML"]
+section = ["HTML"]
+page = ["HTML"]
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+
+# Site-wide params consumed by templates
+[params]
+  description = "Odkrijte Bearo Casino s spletnimi igralnimi avtomati, live casinom, varnimi plačili in sladkimi bonusi v pisani jelly atmosferi."
+  brand = "Bearo Casino"
+  domain = "bearo.si"
+  currency = "EUR"
+  currencySymbol = "€"
+  ogImage = "/img/hero-bears.jpg"
+  themeColor = "#FF3D6E"
+
+  # Visible bonus copy used across the page
+  mainBonusHeadline = "200% Welcome Bonus do €7.000 + 25 brezplačnih vrtljajev + 5% cashback"
+  mainBonusShort    = "200% bonus dobrodošlice do €7.000"
+  secondaryBonus    = "100% do €750 + 200 FS + 1 Bonus"
+
+  # Social
+  [params.social]
+    twitter = "@bearocasino"
+    facebook = "bearocasino"
+    instagram = "bearocasino"
+
+# Top navigation menu — Slovenian
+# (Using the plural `menus` form preferred since Hugo 0.123. The singular
+#  `menu` form still works as an alias, but `menus` avoids any future
+#  deprecation warnings on Hugo ≥ 0.150.)
+[[menus.main]]
+  name = "Domov"
+  url = "#domov"
+  weight = 10
+[[menus.main]]
+  name = "Igre"
+  url = "#igre"
+  weight = 20
+[[menus.main]]
+  name = "Bonusi"
+  url = "#bonusi"
+  weight = 30
+[[menus.main]]
+  name = "VIP Klub"
+  url = "#vip"
+  weight = 40
+[[menus.main]]
+  name = "Plačila"
+  url = "#placila"
+  weight = 50
+[[menus.main]]
+  name = "Podpora"
+  url = "#podpora"
+  weight = 60
+
+# Footer link groups
+[[menus.footerLegal]]
+  name = "Pogoji uporabe"
+  url = "/pogoji/"
+  weight = 10
+[[menus.footerLegal]]
+  name = "Politika zasebnosti"
+  url = "/zasebnost/"
+  weight = 20
+[[menus.footerLegal]]
+  name = "Pravila bonusov"
+  url = "/pravila-bonusov/"
+  weight = 30
+[[menus.footerLegal]]
+  name = "Odgovorno igranje"
+  url = "/odgovorno-igranje/"
+  weight = 40
+
+[[menus.footerHelp]]
+  name = "Plačila"
+  url = "#placila"
+  weight = 10
+[[menus.footerHelp]]
+  name = "Pogosta vprašanja"
+  url = "#faq"
+  weight = 20
+[[menus.footerHelp]]
+  name = "Kontakt"
+  url = "#podpora"
+  weight = 30

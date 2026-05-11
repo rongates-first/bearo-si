@@ -1,0 +1,543 @@
+{{ define "main" }}
+
+{{/* ===== HERO ===== */}}
+<section id="domov" class="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <span class="blob blob--raspberry blob--xl float-slow"></span>
+    <span class="blob blob--lemon    blob--lg float-mid"></span>
+    <span class="blob blob--mint     blob--md float-fast"></span>
+    <span class="blob blob--berry    blob--md float-slow" style="--delay:.6s"></span>
+    <span class="dot dot--orange"></span>
+    <span class="dot dot--neon-pink"></span>
+    <span class="dot dot--lemon"></span>
+    <span class="ring ring--neon-pink"></span>
+    <span class="ring ring--neon-lime"></span>
+  </div>
+
+  <div class="hero__inner">
+    <div class="hero__text">
+      <p class="eyebrow eyebrow--cream">Bearo Casino · sl-SI · €</p>
+      <h1 class="hero__title">
+        Bearo Casino — <span class="hero__title-accent">spletne igre,</span><br>
+        <span class="hero__title-accent hero__title-accent--lemon">sladki bonusi</span>
+        in pisane nagrade
+      </h1>
+      <p class="hero__lead">
+        Vstopite v jelly svet bonusov in iger. Bearo.si združuje igralne avtomate, ruleto, blackjack in live casino z varnimi plačili in podporo v slovenščini.
+      </p>
+
+      <div class="hero__cta">
+        <a class="btn btn--primary btn--xl btn--shine" href="#registracija">
+          <span>Prevzemi bonus</span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="8" width="18" height="4" rx="1"></rect>
+            <path d="M5 12v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"></path>
+            <path d="M12 8v14"></path>
+            <path d="M12 8H8a2.5 2.5 0 0 1 0-5c3 0 4 5 4 5z"></path>
+            <path d="M12 8h4a2.5 2.5 0 0 0 0-5c-3 0-4 5-4 5z"></path>
+          </svg>
+        </a>
+        <a class="btn btn--ghost btn--xl" href="#igre">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="3.5"></rect>
+            <circle cx="8"  cy="8"  r="1.4" fill="currentColor" stroke="none"></circle>
+            <circle cx="16" cy="8"  r="1.4" fill="currentColor" stroke="none"></circle>
+            <circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"></circle>
+            <circle cx="8"  cy="16" r="1.4" fill="currentColor" stroke="none"></circle>
+            <circle cx="16" cy="16" r="1.4" fill="currentColor" stroke="none"></circle>
+          </svg>
+          <span>Razišči igre</span>
+        </a>
+      </div>
+
+      <ul class="hero__points" aria-label="Hitri pregled ponudbe">
+        <li>
+          <svg class="ico ico--mint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3z"></path>
+            <path d="M9 12l2 2 4-4"></path>
+          </svg>
+          Licencirana ponudba
+        </li>
+        <li>
+          <svg class="ico ico--lemon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="currentColor"></polygon>
+          </svg>
+          Hitra izplačila
+        </li>
+        <li>
+          <svg class="ico ico--mint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            <line x1="8" y1="9"  x2="16" y2="9"></line>
+            <line x1="8" y1="13" x2="13" y2="13"></line>
+          </svg>
+          Podpora v slovenščini
+        </li>
+      </ul>
+    </div>
+
+    <div class="hero__art" aria-hidden="true">
+      <!-- Glowing pile of jelly casino treasures.
+           The wrapper provides a slowly rotating aurora halo,
+           the picture itself bobs and pulses. -->
+      <div class="treasure">
+        <span class="treasure__halo" aria-hidden="true"></span>
+        <span class="treasure__rays" aria-hidden="true"></span>
+        <picture class="treasure__pic">
+          <source srcset="{{ "img/hero-treasures.webp" | relURL }}" type="image/webp">
+          <img src="{{ "img/hero-treasures.png" | relURL }}"
+               alt="" width="1024" height="1024" loading="eager" decoding="async">
+        </picture>
+        <span class="spark spark--1" aria-hidden="true"></span>
+        <span class="spark spark--2" aria-hidden="true"></span>
+        <span class="spark spark--3" aria-hidden="true"></span>
+        <span class="spark spark--4" aria-hidden="true"></span>
+        <span class="spark spark--5" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating bonus banner pinned to hero bottom -->
+  <a class="hero__bonus" href="#bonusi">
+    <span class="hero__bonus-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="8" width="18" height="4" rx="1"></rect>
+        <path d="M5 12v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"></path>
+        <path d="M12 8v14"></path>
+        <path d="M12 8H8a2.5 2.5 0 0 1 0-5c3 0 4 5 4 5z"></path>
+        <path d="M12 8h4a2.5 2.5 0 0 0 0-5c-3 0-4 5-4 5z"></path>
+      </svg>
+    </span>
+    <span class="hero__bonus-text">
+      <strong>200% Welcome Bonus do €7.000</strong>
+      <em>+ 25 brezplačnih vrtljajev · + 5% cashback</em>
+    </span>
+    <span class="hero__bonus-arrow" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </span>
+  </a>
+</section>
+
+
+{{/* ===== BONUSI ===== */}}
+<section id="bonusi" class="section section--cream">
+  <div class="section__inner">
+    <header class="section__head">
+      <p class="eyebrow">Bonusi</p>
+      <h2 class="section__title">Sladki bonusi za novo in zvesto občinstvo</h2>
+      <p class="section__lead">
+        Bearo Casino bonus pripravi v dveh okusih: glavna dobrodošlica za nove igralce in dodatni paket za vse, ki želijo razširiti igralni saldo.
+      </p>
+    </header>
+
+    <div class="bonus-grid">
+      <article class="bonus-card bonus-card--main">
+        <div class="bonus-card__ribbon">Glavni bonus</div>
+        <div class="bonus-card__shine" aria-hidden="true"></div>
+        <div class="bonus-card__icon" aria-hidden="true">
+          <i class="fa-solid fa-crown"></i>
+        </div>
+        <h3 class="bonus-card__title">200% Welcome Bonus do €7.000</h3>
+        <ul class="bonus-card__points">
+          <li><i class="fa-solid fa-circle-check"></i> 200% bonus na prvi polog</li>
+          <li><i class="fa-solid fa-circle-check"></i> 25 brezplačnih vrtljajev</li>
+          <li><i class="fa-solid fa-circle-check"></i> 5% tedenski cashback</li>
+        </ul>
+        <p class="bonus-card__small">Velja za nove igralce 18+. Pogoji stav (wagering) veljajo.</p>
+        <a class="btn btn--primary btn--shine" href="#registracija">
+          <span>Aktiviraj 200% bonus</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <article class="bonus-card bonus-card--alt">
+        <div class="bonus-card__ribbon bonus-card__ribbon--mint">Drugi paket</div>
+        <div class="bonus-card__icon bonus-card__icon--mint" aria-hidden="true">
+          <i class="fa-solid fa-gift"></i>
+        </div>
+        <h3 class="bonus-card__title">100% do €750 + 200 FS + 1 Bonus</h3>
+        <ul class="bonus-card__points">
+          <li><i class="fa-solid fa-circle-check"></i> 100% bonus do €750</li>
+          <li><i class="fa-solid fa-circle-check"></i> 200 brezplačnih vrtljajev</li>
+          <li><i class="fa-solid fa-circle-check"></i> 1 dodatni bonus paket</li>
+        </ul>
+        <p class="bonus-card__small">Bonus je na voljo po prvem aktiviranem računu. 18+.</p>
+        <a class="btn btn--ghost btn--shine" href="#registracija">
+          <span>Več o paketu</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+    </div>
+
+    <div class="bonus-disclaimer">
+      <i class="fa-solid fa-circle-info"></i>
+      <p>
+        Pogoji stav (<em>wagering requirements</em>) so razloženi v <a href="/pravila-bonusov/">pravilih bonusov</a>. Bearo bonus se aktivira po prvem pologu in je veljaven omejen čas. Igrajte odgovorno; bonus nikoli ni jamstvo za dobitek.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+{{/* ===== IGRE / KATALOG ===== */}}
+<section id="igre" class="section section--mint">
+  <div class="section__inner">
+    <header class="section__head">
+      <p class="eyebrow">Bearo igre</p>
+      <h2 class="section__title">Pisan katalog spletnih iger</h2>
+      <p class="section__lead">
+        Bearo igralni avtomati, ruleta, blackjack, live casino in jackpoti — vse ponudbe so razvrščene po kategorijah, da hitro najdete svoj okus.
+      </p>
+    </header>
+
+    {{/* CSS-only tabs via radio inputs */}}
+    <div class="tabs" role="tablist" aria-label="Kategorije iger">
+      <input type="radio" name="games-tab" id="tab-slots" checked>
+      <input type="radio" name="games-tab" id="tab-roulette">
+      <input type="radio" name="games-tab" id="tab-blackjack">
+      <input type="radio" name="games-tab" id="tab-live">
+      <input type="radio" name="games-tab" id="tab-jackpots">
+
+      <div class="tabs__labels">
+        <label for="tab-slots"     class="tab-pill"><i class="fa-solid fa-dice-three"></i> Igralni avtomati</label>
+        <label for="tab-roulette"  class="tab-pill"><i class="fa-solid fa-circle-notch"></i> Ruleta</label>
+        <label for="tab-blackjack" class="tab-pill"><i class="fa-solid fa-club"></i> Blackjack</label>
+        <label for="tab-live"      class="tab-pill"><i class="fa-solid fa-tower-broadcast"></i> Live Casino</label>
+        <label for="tab-jackpots"  class="tab-pill"><i class="fa-solid fa-star"></i> Jackpoti</label>
+      </div>
+
+      <div class="tabs__panels">
+        {{/* Slots — each tile uses a custom jelly-candy artwork from
+             /static/img/slots/ instead of the generic FA icon used in the
+             other game categories. */}}
+        <div class="tabs__panel" data-tab="slots" id="igralni-avtomati">
+          <div class="game-grid game-grid--art">
+            {{ $slots := slice
+              (dict "title" "Jelly Reels"   "tag" "Sladka klasika" "color" "raspberry" "img" "jelly-reels")
+              (dict "title" "Sugar Vault"   "tag" "Megaways"        "color" "lemon"     "img" "sugar-vault")
+              (dict "title" "Candy Crown"   "tag" "Bonus Buy"       "color" "berry"     "img" "candy-crown")
+              (dict "title" "Mint Wilds"    "tag" "Hold & Spin"     "color" "mint"      "img" "mint-wilds")
+              (dict "title" "Berry Burst"   "tag" "Cluster"         "color" "orange"    "img" "berry-burst")
+              (dict "title" "Neon Drops"    "tag" "Avalanche"       "color" "neon-pink" "img" "neon-drops")
+            }}
+            {{ range $slots }}
+              <article class="game-tile game-tile--{{ .color }} game-tile--art">
+                <div class="game-tile__shine" aria-hidden="true"></div>
+                <div class="game-tile__art" aria-hidden="true">
+                  <picture>
+                    <source srcset="{{ printf "img/slots/%s.webp" .img | relURL }}" type="image/webp">
+                    <img src="{{ printf "img/slots/%s.png" .img | relURL }}"
+                         alt="" width="512" height="512" loading="lazy" decoding="async">
+                  </picture>
+                </div>
+                <h3 class="game-tile__title">{{ .title }}</h3>
+                <p class="game-tile__tag">{{ .tag }}</p>
+                <a class="game-tile__cta" href="#registracija">
+                  <span>Igraj</span>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14">
+                    <polygon points="6,4 20,12 6,20"></polygon>
+                  </svg>
+                </a>
+              </article>
+            {{ end }}
+          </div>
+        </div>
+
+        {{/* Roulette */}}
+        <div class="tabs__panel" data-tab="roulette" id="ruleta">
+          <div class="game-grid">
+            {{ $rl := slice
+              (dict "title" "European Roulette"  "tag" "Klasika"       "color" "raspberry" "icon" "fa-circle-notch")
+              (dict "title" "French Roulette"    "tag" "La Partage"    "color" "berry"     "icon" "fa-circle-notch")
+              (dict "title" "Speed Roulette"     "tag" "Hitra igra"    "color" "lemon"     "icon" "fa-stopwatch")
+              (dict "title" "Lightning Roulette" "tag" "Multiplikator" "color" "neon-pink" "icon" "fa-bolt")
+            }}
+            {{ range $rl }}
+              <article class="game-tile game-tile--{{ .color }}">
+                <div class="game-tile__shine" aria-hidden="true"></div>
+                <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid {{ .icon }}"></i></div>
+                <h3 class="game-tile__title">{{ .title }}</h3>
+                <p class="game-tile__tag">{{ .tag }}</p>
+                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+              </article>
+            {{ end }}
+          </div>
+        </div>
+
+        {{/* Blackjack */}}
+        <div class="tabs__panel" data-tab="blackjack" id="blackjack">
+          <div class="game-grid">
+            {{ $bj := slice
+              (dict "title" "Classic Blackjack" "tag" "Standard" "color" "berry"  "icon" "fa-club")
+              (dict "title" "Vegas Strip BJ"    "tag" "8 deck"   "color" "raspberry" "icon" "fa-spade")
+              (dict "title" "Free Bet BJ"       "tag" "Side bet" "color" "mint"   "icon" "fa-heart")
+              (dict "title" "Switch Blackjack"  "tag" "Twin"     "color" "lemon"  "icon" "fa-shuffle")
+            }}
+            {{ range $bj }}
+              <article class="game-tile game-tile--{{ .color }}">
+                <div class="game-tile__shine" aria-hidden="true"></div>
+                <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid {{ .icon }}"></i></div>
+                <h3 class="game-tile__title">{{ .title }}</h3>
+                <p class="game-tile__tag">{{ .tag }}</p>
+                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+              </article>
+            {{ end }}
+          </div>
+        </div>
+
+        {{/* Live Casino */}}
+        <div class="tabs__panel" data-tab="live" id="live-casino">
+          <div class="game-grid">
+            {{ $lv := slice
+              (dict "title" "Sweet Bonanza Live" "tag" "Game show" "color" "raspberry" "icon" "fa-tower-broadcast")
+              (dict "title" "Mega Wheel"         "tag" "Wheel"     "color" "lemon"     "icon" "fa-circle-dot")
+              (dict "title" "Crazy Time Studio"  "tag" "Multiplay" "color" "neon-pink" "icon" "fa-bolt")
+              (dict "title" "Dream Catcher"      "tag" "Wheel"     "color" "berry"     "icon" "fa-star")
+            }}
+            {{ range $lv }}
+              <article class="game-tile game-tile--{{ .color }}">
+                <div class="game-tile__shine" aria-hidden="true"></div>
+                <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid {{ .icon }}"></i></div>
+                <h3 class="game-tile__title">{{ .title }}</h3>
+                <p class="game-tile__tag">{{ .tag }}</p>
+                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+              </article>
+            {{ end }}
+          </div>
+        </div>
+
+        {{/* Jackpots */}}
+        <div class="tabs__panel" data-tab="jackpots" id="jackpoti">
+          <div class="game-grid">
+            {{ $jp := slice
+              (dict "title" "Jelly Jackpot"     "tag" "Progressive" "color" "lemon"     "icon" "fa-gem")
+              (dict "title" "Berry Millions"    "tag" "Daily drop"  "color" "berry"     "icon" "fa-coins")
+              (dict "title" "Sugar Mega"        "tag" "Mega pool"   "color" "raspberry" "icon" "fa-trophy")
+              (dict "title" "Neon Hourly"       "tag" "Must drop"   "color" "neon-pink" "icon" "fa-stopwatch")
+            }}
+            {{ range $jp }}
+              <article class="game-tile game-tile--{{ .color }}">
+                <div class="game-tile__shine" aria-hidden="true"></div>
+                <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid {{ .icon }}"></i></div>
+                <h3 class="game-tile__title">{{ .title }}</h3>
+                <p class="game-tile__tag">{{ .tag }}</p>
+                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+              </article>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{{/* ===== VIP ===== */}}
+<section id="vip" class="section section--berry">
+  <div class="section__inner">
+    <header class="section__head section__head--light">
+      <p class="eyebrow eyebrow--cream">Bearo VIP klub</p>
+      <h2 class="section__title section__title--light">Premium klub s sladkimi nagradami</h2>
+      <p class="section__lead section__lead--light">
+        Stopnice rastejo z igro. Vsaka stopnja Bearo VIP kluba doda hitrejša izplačila, osebne ponudbe in ekskluzivne promocije.
+      </p>
+    </header>
+
+    <div class="vip-grid">
+      <article class="vip-card vip-card--bronze">
+        <div class="vip-card__crown" aria-hidden="true"><i class="fa-solid fa-medal"></i></div>
+        <h3 class="vip-card__name">Candy Bronze</h3>
+        <p class="vip-card__tag">Sladek vstop</p>
+        <ul class="vip-card__points">
+          <li>Mesečni cashback</li>
+          <li>Tedenski FS paket</li>
+          <li>Bonus za rojstni dan</li>
+        </ul>
+      </article>
+
+      <article class="vip-card vip-card--silver">
+        <div class="vip-card__crown" aria-hidden="true"><i class="fa-solid fa-award"></i></div>
+        <h3 class="vip-card__name">Jelly Silver</h3>
+        <p class="vip-card__tag">Razširjene ugodnosti</p>
+        <ul class="vip-card__points">
+          <li>Višji cashback</li>
+          <li>Hitrejša izplačila</li>
+          <li>Osebne promocije</li>
+        </ul>
+      </article>
+
+      <article class="vip-card vip-card--gold">
+        <div class="vip-card__crown" aria-hidden="true"><i class="fa-solid fa-crown"></i></div>
+        <h3 class="vip-card__name">Sugar Gold</h3>
+        <p class="vip-card__tag">Prioritetni status</p>
+        <ul class="vip-card__points">
+          <li>Prednostna podpora</li>
+          <li>Ekskluzivni turnirji</li>
+          <li>Višje limite plačil</li>
+        </ul>
+      </article>
+
+      <article class="vip-card vip-card--diamond">
+        <div class="vip-card__crown" aria-hidden="true"><i class="fa-solid fa-gem"></i></div>
+        <h3 class="vip-card__name">Neon Diamond</h3>
+        <p class="vip-card__tag">Najvišja stopnja</p>
+        <ul class="vip-card__points">
+          <li>Osebni VIP skrbnik</li>
+          <li>Najhitrejša izplačila</li>
+          <li>Ekskluzivni dogodki</li>
+        </ul>
+      </article>
+    </div>
+
+    <p class="vip-foot">
+      Bearo VIP klub temelji na zvestobi: točke se nabirajo skozi igro in odpirajo višje stopnje. Pridružitev kluba je del registracije na Bearo.si.
+    </p>
+  </div>
+</section>
+
+
+{{/* ===== PLAČILA ===== */}}
+<section id="placila" class="section section--cream">
+  <div class="section__inner">
+    <header class="section__head">
+      <p class="eyebrow">Plačila</p>
+      <h2 class="section__title">Varne plačilne metode za Slovenijo</h2>
+      <p class="section__lead">
+        Bearo Casino plačila vključujejo metode, ki jih slovenski igralci najpogosteje uporabljajo. Vsak prenos je varovan s šifrirano povezavo.
+      </p>
+    </header>
+
+    <ul class="payment-grid" aria-label="Podprte plačilne metode">
+      <li class="pay-card"><span class="pay-card__inner"><i class="fa-brands fa-cc-visa"></i><span>Visa</span></span></li>
+      <li class="pay-card"><span class="pay-card__inner"><i class="fa-brands fa-cc-mastercard"></i><span>Mastercard</span></span></li>
+      <li class="pay-card"><span class="pay-card__inner"><i class="fa-solid fa-building-columns"></i><span>Bančno nakazilo</span></span></li>
+      <li class="pay-card"><span class="pay-card__inner"><i class="fa-solid fa-wallet"></i><span>Skrill</span></span></li>
+      <li class="pay-card"><span class="pay-card__inner"><i class="fa-solid fa-credit-card"></i><span>Neteller</span></span></li>
+      <li class="pay-card"><span class="pay-card__inner"><i class="fa-solid fa-ticket"></i><span>Paysafecard</span></span></li>
+      <li class="pay-card"><span class="pay-card__inner"><i class="fa-brands fa-apple-pay"></i><span>Apple Pay</span></span></li>
+      <li class="pay-card"><span class="pay-card__inner"><i class="fa-brands fa-google-pay"></i><span>Google Pay</span></span></li>
+    </ul>
+
+    <p class="pay-note">
+      Pologi so na Bearo.si načeloma takojšnji. Bearo Casino izplačila so obdelana po preverjanju računa; časi prejema so odvisni od izbrane metode.
+    </p>
+  </div>
+</section>
+
+
+{{/* ===== ZAUPANJE ===== */}}
+<section class="section section--sky">
+  <div class="section__inner">
+    <header class="section__head">
+      <p class="eyebrow">Zaupanje in varnost</p>
+      <h2 class="section__title">Bearo.si igralcem stoji ob strani</h2>
+    </header>
+
+    <div class="trust-grid">
+      <article class="trust-badge"><i class="fa-solid fa-shield-halved"></i><h3>Licencirano in regulirano</h3><p>Ponudba sledi pravilom regulacije za spletno igralništvo.</p></article>
+      <article class="trust-badge"><i class="fa-solid fa-lock"></i><h3>Varna plačila</h3><p>Vsi prenosi tečejo prek šifriranih povezav in preverjenih partnerjev.</p></article>
+      <article class="trust-badge"><i class="fa-solid fa-bolt"></i><h3>Hitra izplačila</h3><p>Preverjeni računi prejmejo dobitke v krajših časovnih okvirih.</p></article>
+      <article class="trust-badge"><i class="fa-solid fa-user-shield"></i><h3>Varstvo podatkov</h3><p>Osebni podatki so obravnavani v skladu z evropskim okvirom GDPR.</p></article>
+      <article class="trust-badge"><i class="fa-solid fa-headset"></i><h3>Podpora igralcem</h3><p>Slovenska podpora odgovarja na vprašanja o računu, igrah in plačilih.</p></article>
+      <article class="trust-badge"><i class="fa-solid fa-hand-holding-heart"></i><h3>Odgovorno igranje</h3><p>Orodja za omejitev pologa, časa igre in samoizključitev so vgrajena.</p></article>
+    </div>
+  </div>
+</section>
+
+
+{{/* ===== SEO PROZA ===== */}}
+<section class="section section--cream section--narrow">
+  <div class="section__inner section__inner--prose">
+    <header class="section__head section__head--left">
+      <p class="eyebrow">O Bearo Casino</p>
+      <h2 class="section__title section__title--narrow">Bearo Casino — pisana destinacija za spletne igre v Sloveniji</h2>
+    </header>
+
+    <div class="prose">
+      <p>
+        Bearo Casino združuje sladko jelly atmosfero in resno ponudbo spletne igralnice za slovenski trg. Bearo.si v eni domeni povezuje igralne avtomate, ruleto, blackjack, live casino in rastoče jackpote, vse pa je urejeno v jasno strukturirane kategorije, da igralec hitro najde svoj žanr.
+      </p>
+      <p>
+        Bearo bonus za nove igralce vključuje 200% dobrodošlico do €7.000, 25 brezplačnih vrtljajev in 5% tedenski cashback. Drugi Bearo bonus paket prinese 100% do €750 in dodatnih 200 brezplačnih vrtljajev z enim dodatnim bonusom. Za vse bonuse veljajo standardni pogoji stav (wagering requirements), opisani v razdelku pravil bonusov.
+      </p>
+      <p>
+        Bearo igralni avtomati so razdeljeni na priljubljene podkategorije: jackpoti z dnevnimi in mega bazeni, megaways igre z razširjenim številom kombinacij, klasični 3-kolutni avtomati ter sveži tedenski izbor sladkih tem. Bearo online casino dopolnjuje ponudba namiznih iger — spletna ruleta, blackjack, baccarat in pokerske različice — ter ekipa Bearo spletni casino studiev za live casino izkušnjo z živimi delivci.
+      </p>
+      <p>
+        Glede plačil Bearo Casino podpira metode, ki so v slovenskem in širšem evropskem prostoru najbolj v uporabi: Visa, Mastercard, bančno nakazilo, Skrill casino, Neteller casino, Paysafecard casino in mobilna plačila Apple Pay ter Google Pay, kjer so na voljo. Hitra izplačila so prioriteta — preverjeni računi prejmejo izplačila v krajših časovnih okvirih.
+      </p>
+      <p>
+        Varen online casino temelji na zaščiti osebnih podatkov, šifrirani komunikaciji in politiki odgovornega igranja. Bearo.si vključuje orodja za omejitev pologa, igralnih sej in samoizključitve. Vsa vsebina je namenjena izključno igralcem, ki so dopolnili 18 let in bivajo na ozemljih, kjer je spletno igralništvo zakonito.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+{{/* ===== FAQ ===== */}}
+<section id="faq" class="section section--mint section--narrow">
+  <div class="section__inner">
+    <header class="section__head">
+      <p class="eyebrow">Pogosta vprašanja</p>
+      <h2 class="section__title">Bearo Casino — pogosta vprašanja</h2>
+    </header>
+
+    <div class="faq">
+      <details class="faq__item" open>
+        <summary>Kakšen bonus dobi novi igralec na Bearo Casino?</summary>
+        <p>Novi igralec prejme 200% bonus dobrodošlice do €7.000, 25 brezplačnih vrtljajev in 5% cashback. Bonus se aktivira po prvem pologu in zanj veljajo standardni pogoji stav.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Kako poteka Bearo registracija na Bearo.si?</summary>
+        <p>Bearo registracija zahteva veljaven e-naslov, potrditev starosti 18+ in nekaj osnovnih podatkov. Po potrditvi računa lahko opravite prvi polog ter aktivirate bonus dobrodošlice.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Katere igre vsebuje Bearo igralni avtomati ponudba?</summary>
+        <p>Bearo igralni avtomati so razdeljeni na klasične 3-kolutne igre, megaways, hold &amp; spin, bonus buy in jackpot kategorije. Vsako igro lahko preizkusite tudi v demo načinu, kjer je na voljo.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Katere plačilne metode podpira Bearo Casino?</summary>
+        <p>Bearo Casino sprejema Visa, Mastercard, bančna nakazila, Skrill, Neteller, Paysafecard ter mobilna plačila Apple Pay in Google Pay, kjer so na voljo.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Kako Bearo prijava poteka, če sem registracijo že opravil?</summary>
+        <p>Bearo prijava zahteva e-naslov in geslo, izbrano ob registraciji. Za dodatno varnost je priporočena dvostopenjska potrditev, ki je dostopna v nastavitvah računa.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+{{/* ===== END CTA ===== */}}
+<section id="registracija" class="cta-banner">
+  <div class="cta-banner__bg" aria-hidden="true">
+    <span class="blob blob--lemon blob--lg float-mid"></span>
+    <span class="blob blob--mint  blob--md float-slow"></span>
+    <span class="blob blob--raspberry blob--md float-fast"></span>
+  </div>
+  <div class="cta-banner__inner">
+    <p class="eyebrow eyebrow--cream">Pridruži se Bearo Casino</p>
+    <h2 class="cta-banner__title">Sladke nagrade čakajo. Začni z 200% bonusom in 25 brezplačnimi vrtljaji.</h2>
+    <div class="cta-banner__cta">
+      <a class="btn btn--primary btn--xl btn--shine" href="#registracija">
+        <span>Začni igrati</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+      <a class="btn btn--ghost btn--xl" href="#prijava" id="prijava">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Prijava</span>
+      </a>
+    </div>
+    <p class="cta-banner__small">Ponudba velja za nove igralce, starejše od 18 let. Pogoji stav (wagering) veljajo. Igrajte odgovorno.</p>
+  </div>
+</section>
+
+{{ end }}

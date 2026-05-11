@@ -1,0 +1,82 @@
+<footer class="site-footer" id="podpora">
+  <div class="site-footer__shapes" aria-hidden="true">
+    <span class="blob blob--berry"></span>
+    <span class="blob blob--raspberry"></span>
+    <span class="blob blob--lemon"></span>
+  </div>
+
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="nav-logo nav-logo--footer" href="{{ "/" | relURL }}" aria-label="Bearo Casino">
+        <span class="nav-logo__icon" aria-hidden="true">
+          <picture>
+            <source srcset="{{ "img/logo-bearo.webp" | relURL }}" type="image/webp">
+            <img src="{{ "img/logo-bearo.png" | relURL }}"
+                 alt="" width="48" height="48" loading="lazy" decoding="async">
+          </picture>
+        </span>
+        <span class="nav-logo__word"><strong>Bearo</strong><em>Casino</em></span>
+      </a>
+      <p class="site-footer__pitch">
+        Bearo.si je sladka destinacija za spletne igralne avtomate, ruleto, blackjack in live casino. Vstop dovoljen polnoletnim igralcem (18+).
+      </p>
+      <ul class="site-footer__social" aria-label="Družbena omrežja">
+        <li><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+        <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+        <li><a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
+        <li><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></li>
+      </ul>
+    </div>
+
+    <div class="site-footer__cols">
+      <div class="site-footer__col">
+        <h3>Igre</h3>
+        <ul>
+          <li><a href="#igralni-avtomati">Igralni avtomati</a></li>
+          <li><a href="#ruleta">Ruleta</a></li>
+          <li><a href="#blackjack">Blackjack</a></li>
+          <li><a href="#live-casino">Live Casino</a></li>
+          <li><a href="#jackpoti">Jackpoti</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <h3>Pomoč</h3>
+        <ul>
+          {{ range site.Menus.footerHelp }}
+            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{ end }}
+          <li><a href="mailto:podpora@bearo.si">podpora@bearo.si</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <h3>Pravno</h3>
+        <ul>
+          {{ range site.Menus.footerLegal }}
+            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <h3>Plačila</h3>
+        <ul class="site-footer__pay">
+          <li>Visa</li><li>Mastercard</li><li>Skrill</li>
+          <li>Neteller</li><li>Paysafecard</li><li>Bančno nakazilo</li>
+          <li>Apple Pay</li><li>Google Pay</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__responsible">
+      <div class="site-footer__age" aria-label="Samo za polnoletne">18+</div>
+      <p>
+        Igre na srečo lahko povzročijo zasvojenost. Igrajte odgovorno in zastavite osebne meje. Pomoč in nasvet sta na voljo prek povezav <a href="/odgovorno-igranje/">odgovornega igranja</a>.
+        Za bonuse veljajo pogoji stav (wagering requirements). Bearo.si je namenjen igralcem, starejšim od 18 let, ki bivajo na ozemljih, kjer je spletno igralništvo zakonito.
+      </p>
+    </div>
+
+    <div class="site-footer__legal">
+      <p>© {{ now.Year }} Bearo Casino · bearo.si · Vse pravice pridržane.</p>
+      <p class="site-footer__seo-line">Bearo Casino · Bearo.si · Bearo bonus · Bearo registracija · Bearo prijava · Bearo igre · Bearo igralni avtomati · Bearo online casino · Bearo spletni casino</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article class="content-page">
+  <div class="content-page__container">
+    <header class="content-page__header">
+      <p class="eyebrow">{{ .Section | humanize }}</p>
+      <h1 class="content-page__title">{{ .Title }}</h1>
+      {{ with .Params.lead }}
+        <p class="content-page__lead">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <div class="content-page__body prose">
+      {{ .Content }}
+    </div>
+
+    <div class="content-page__back">
+      <a class="btn btn--ghost" href="/">← Nazaj na Bearo Casino</a>
+    </div>
+  </div>
+</article>
+{{ end }}

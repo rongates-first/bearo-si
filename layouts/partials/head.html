@@ -1,0 +1,167 @@
+{{- $isHome := .IsHome -}}
+{{- $title := cond $isHome site.Title (printf "%s | %s" .Title site.Title) -}}
+{{- $desc := cond (ne (.Description | default "") "") .Description (site.Params.description | default "") -}}
+{{- $url := .Permalink -}}
+{{- $ogImage := absURL (site.Params.ogImage | default "/img/og-bearo.svg") -}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="{{ site.Params.themeColor }}">
+<meta name="format-detection" content="telephone=no">
+<meta name="rating" content="adult">
+
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+<link rel="canonical" href="{{ $url }}">
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sl_SI">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ $url }}">
+<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:image:alt" content="{{ site.Title }} – pisani bonusi in igre">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+{{ with site.Params.social.twitter }}<meta name="twitter:site" content="{{ . }}">{{ end }}
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32"   href="{{ "img/favicon-32.png"  | relURL }}">
+<link rel="icon" type="image/png" sizes="64x64"   href="{{ "img/favicon-64.png"  | relURL }}">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ "img/favicon-192.png" | relURL }}">
+<link rel="apple-touch-icon"      sizes="192x192" href="{{ "img/favicon-192.png" | relURL }}">
+
+<!-- Fonts: Bunny Fonts (privacy-friendly Google Fonts mirror).
+     Bunny always delivers ALL subsets in one CSS payload — no unicode-range
+     gymnastics — so Slovenian Š/Č/Ž (latin-ext) load reliably even on
+     networks where gstatic.com is filtered or where the browser fails
+     to fetch the latin-ext WOFF2 via unicode-range matching. -->
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:500,600,700|inter:400,500,600&display=swap">
+
+<!-- Tailwind via CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+  // Tailwind theme extension – matches the candy palette so utility classes work everywhere.
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          raspberry: { DEFAULT: '#FF3D6E', deep: '#E2255A' },
+          lemon:     { DEFAULT: '#FFD23F', deep: '#F1B800' },
+          mint:      { DEFAULT: '#7DE6BB', deep: '#3BC79A' },
+          cream:     { DEFAULT: '#FFF7E8', deep: '#FFE9C2' },
+          orange:    { DEFAULT: '#FF9F45', deep: '#E07A1B' },
+          berry:     { DEFAULT: '#7A2E96', deep: '#4F1D62' },
+          sky:       { DEFAULT: '#CFEBFF', deep: '#9CD3FF' },
+          neon: {
+            pink: '#FF2D87',
+            lime: '#C6FF3D',
+          },
+          plum:      '#1E1230',
+        },
+        fontFamily: {
+          display: ['Fredoka', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+          body:    ['Inter',   'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        },
+        boxShadow: {
+          'jelly':   '0 18px 40px -16px rgba(255, 61, 110, .45), 0 6px 14px -8px rgba(122, 46, 150, .25)',
+          'jelly-lg':'0 28px 60px -22px rgba(255, 61, 110, .55), 0 10px 22px -10px rgba(122, 46, 150, .30)',
+          'cream':   '0 18px 40px -22px rgba(30, 18, 48, .25)',
+        },
+        borderRadius: {
+          'jelly': '28px',
+          'pill':  '999px',
+        },
+      },
+    },
+  };
+</script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer">
+
+<!-- Custom CSS (animations, jelly system, candy decoration) -->
+<link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+
+<!-- Structured data -->
+{{ if $isHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ site.Title }}",
+  "url": "{{ site.BaseURL }}",
+  "inLanguage": "sl-SI",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ site.BaseURL }}?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bearo Casino",
+  "url": "https://bearo.si/",
+  "logo": "https://bearo.si/img/logo-bearo.svg",
+  "sameAs": [
+    "https://www.facebook.com/{{ site.Params.social.facebook }}",
+    "https://www.instagram.com/{{ site.Params.social.instagram }}"
+  ],
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "areaServed": "SI",
+    "availableLanguage": ["Slovenian", "English"]
+  }]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Kakšen bonus dobi novi igralec na Bearo Casino?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Novi igralec na Bearo Casino prejme 200% bonus dobrodošlice do €7.000, 25 brezplačnih vrtljajev in 5% cashback. Za bonus veljajo standardni pogoji stav."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Katere plačilne metode podpira Bearo Casino?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bearo Casino sprejema Visa in Mastercard, bančna nakazila, Skrill, Neteller, Paysafecard ter mobilna plačila Apple Pay in Google Pay, kjer so na voljo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ali je Bearo Casino varen za slovenske igralce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bearo Casino uporablja preverjene plačilne sisteme, šifrirano povezavo in politiko odgovornega igranja, namenjeno zaščiti slovenskih igralcev, starejših od 18 let."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kako poteka prijava in registracija na Bearo.si?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Registracija na Bearo.si zahteva veljaven e-naslov, potrditev starosti 18+ in nekaj osnovnih podatkov. Prijava nato poteka prek izbranega gesla ali povezanega računa."
+      }
+    }
+  ]
+}
+</script>
+{{ end }}
