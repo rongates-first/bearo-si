@@ -91,16 +91,24 @@
 
 <!-- Structured data -->
 {{ if $isHome }}
+{{/* Homepage gets a full schema set: WebSite + Organization + WebPage +
+     FAQPage. Inner pages get Article + BreadcrumbList from single.html. */}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "{{ site.Title }}",
+  "@id": "{{ site.BaseURL }}#website",
   "url": "{{ site.BaseURL }}",
+  "name": {{ site.Title | jsonify }},
+  "description": {{ site.Params.description | jsonify }},
   "inLanguage": "sl-SI",
+  "publisher": { "@id": "{{ site.BaseURL }}#organization" },
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "{{ site.BaseURL }}?s={search_term_string}",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ site.BaseURL }}?s={search_term_string}"
+    },
     "query-input": "required name=search_term_string"
   }
 }
@@ -109,9 +117,21 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "{{ site.BaseURL }}#organization",
   "name": "Bearo Casino",
-  "url": "https://bearo.si/",
-  "logo": "https://bearo.si/img/logo-bearo.svg",
+  "alternateName": "Bearo.si",
+  "url": "{{ site.BaseURL }}",
+  "logo": {
+    "@type": "ImageObject",
+    "url": {{ (absURL "img/logo-bearo.png") | jsonify }},
+    "width": 1024,
+    "height": 1024
+  },
+  "image": {{ (absURL site.Params.ogImage) | jsonify }},
+  "areaServed": {
+    "@type": "Country",
+    "name": "Slovenia"
+  },
   "sameAs": [
     "https://www.facebook.com/{{ site.Params.social.facebook }}",
     "https://www.instagram.com/{{ site.Params.social.instagram }}"
@@ -119,6 +139,7 @@
   "contactPoint": [{
     "@type": "ContactPoint",
     "contactType": "customer support",
+    "email": "podpora@bearo.si",
     "areaServed": "SI",
     "availableLanguage": ["Slovenian", "English"]
   }]
@@ -127,14 +148,48 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "{{ site.BaseURL }}#webpage",
+  "url": "{{ site.BaseURL }}",
+  "name": {{ site.Title | jsonify }},
+  "description": {{ site.Params.description | jsonify }},
+  "inLanguage": "sl-SI",
+  "isPartOf": { "@id": "{{ site.BaseURL }}#website" },
+  "about": { "@id": "{{ site.BaseURL }}#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": {{ (absURL site.Params.ogImage) | jsonify }}
+  },
+  "breadcrumb": { "@id": "{{ site.BaseURL }}#breadcrumb" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "{{ site.BaseURL }}#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Domov",
+      "item": "{{ site.BaseURL }}"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "FAQPage",
+  "@id": "{{ site.BaseURL }}#faq",
   "mainEntity": [
     {
       "@type": "Question",
       "name": "Kakšen bonus dobi novi igralec na Bearo Casino?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Novi igralec na Bearo Casino prejme 200% bonus dobrodošlice do €7.000, 25 brezplačnih vrtljajev in 5% cashback. Za bonus veljajo standardni pogoji stav."
+        "text": "Novi igralec na Bearo Casino prejme 200% bonus dobrodošlice do €7.000, 25 brezplačnih vrtljajev in 5% cashback. Za bonus veljajo standardni pogoji stav (wagering)."
       }
     },
     {
@@ -159,6 +214,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Registracija na Bearo.si zahteva veljaven e-naslov, potrditev starosti 18+ in nekaj osnovnih podatkov. Prijava nato poteka prek izbranega gesla ali povezanega računa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kakšen je wagering (mnogokratnik stav) za Bearo bonus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Privzeti mnogokratnik za bonuse dobrodošlice je x35, ki velja na vsoto pologa in bonusa. Pri kampanjah z drugimi pogoji je mnogokratnik naveden v podrobnostih posameznega bonusa."
       }
     }
   ]

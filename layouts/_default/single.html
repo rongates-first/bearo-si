@@ -1,21 +1,113 @@
 {{ define "main" }}
-<article class="content-page">
-  <div class="content-page__container">
-    <header class="content-page__header">
-      <p class="eyebrow">{{ .Section | humanize }}</p>
-      <h1 class="content-page__title">{{ .Title }}</h1>
-      {{ with .Params.lead }}
-        <p class="content-page__lead">{{ . }}</p>
-      {{ end }}
+{{- $eyebrow := "Informacije" -}}
+{{- if eq .File.BaseFileName "odgovorno-igranje" -}}{{- $eyebrow = "Igralcem v podporo" -}}{{- end -}}
+{{- if eq .File.BaseFileName "pravila-bonusov"   -}}{{- $eyebrow = "Bonusi"             -}}{{- end -}}
+{{- if eq .File.BaseFileName "pogoji"            -}}{{- $eyebrow = "Pravno"             -}}{{- end -}}
+{{- if eq .File.BaseFileName "zasebnost"         -}}{{- $eyebrow = "Pravno"             -}}{{- end -}}
+
+<article class="page">
+  <div class="page__bg" aria-hidden="true">
+    <span class="blob blob--raspberry blob--lg float-slow"></span>
+    <span class="blob blob--lemon    blob--md float-mid"></span>
+    <span class="blob blob--mint     blob--md float-fast"></span>
+    <span class="dot dot--orange"></span>
+    <span class="dot dot--neon-pink"></span>
+  </div>
+
+  <div class="page__inner">
+
+    <nav class="page__breadcrumb" aria-label="Drobtinčna sled">
+      <a href="{{ "/" | relURL }}">Domov</a>
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">{{ .Title }}</span>
+    </nav>
+
+    <header class="page__header">
+      <p class="eyebrow">{{ $eyebrow }}</p>
+      <h1 class="page__title">{{ .Title }}</h1>
+      {{ with .Params.lead }}<p class="page__lead">{{ . }}</p>{{ end }}
     </header>
 
-    <div class="content-page__body prose">
+    {{ if and .TableOfContents (gt (len .TableOfContents) 50) }}
+    <aside class="page__toc" aria-label="V tem dokumentu">
+      <h2>V tem dokumentu</h2>
+      {{ .TableOfContents }}
+    </aside>
+    {{ end }}
+
+    <div class="page__body prose">
       {{ .Content }}
     </div>
 
-    <div class="content-page__back">
-      <a class="btn btn--ghost" href="/">← Nazaj na Bearo Casino</a>
+    <div class="page__cta">
+      <a class="btn btn--primary btn--xl btn--shine" href="{{ "/" | relURL }}">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 5 5 12 12 19"></polyline>
+        </svg>
+        <span>Nazaj na Bearo Casino</span>
+      </a>
     </div>
+
   </div>
 </article>
+
+{{/* ---- JSON-LD: Article + BreadcrumbList ---- */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ .Title | jsonify }},
+  "description": {{ (.Description | default .Summary | default site.Params.description) | jsonify }},
+  "datePublished": {{ (.Date.Format "2006-01-02") | jsonify }},
+  "dateModified": {{ (.Lastmod.Format "2006-01-02") | jsonify }},
+  "inLanguage": "sl-SI",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": {{ site.Title | jsonify }},
+    "url": {{ site.BaseURL | jsonify }}
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Bearo Casino",
+    "url": {{ site.BaseURL | jsonify }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bearo Casino",
+    "url": {{ site.BaseURL | jsonify }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": {{ (absURL "img/logo-bearo.png") | jsonify }},
+      "width": 1024,
+      "height": 1024
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ .Permalink | jsonify }}
+  },
+  "image": {{ (absURL site.Params.ogImage) | jsonify }}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Domov",
+      "item": {{ site.BaseURL | jsonify }}
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ .Title | jsonify }},
+      "item": {{ .Permalink | jsonify }}
+    }
+  ]
+}
+</script>
 {{ end }}

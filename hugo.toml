@@ -43,29 +43,34 @@ page = ["HTML"]
 # (Using the plural `menus` form preferred since Hugo 0.123. The singular
 #  `menu` form still works as an alias, but `menus` avoids any future
 #  deprecation warnings on Hugo ≥ 0.150.)
+#
+# Note: section anchors are written as `/#section` (not just `#section`)
+# so they keep working from inner pages like /pogoji/, /zasebnost/ etc.
+# Bare `#section` would scroll the current page (which doesn't have that
+# section), while `/#section` navigates to homepage and then scrolls.
 [[menus.main]]
   name = "Domov"
-  url = "#domov"
+  url = "/"
   weight = 10
 [[menus.main]]
   name = "Igre"
-  url = "#igre"
+  url = "/#igre"
   weight = 20
 [[menus.main]]
   name = "Bonusi"
-  url = "#bonusi"
+  url = "/#bonusi"
   weight = 30
 [[menus.main]]
   name = "VIP Klub"
-  url = "#vip"
+  url = "/#vip"
   weight = 40
 [[menus.main]]
   name = "Plačila"
-  url = "#placila"
+  url = "/#placila"
   weight = 50
 [[menus.main]]
   name = "Podpora"
-  url = "#podpora"
+  url = "/#podpora"
   weight = 60
 
 # Footer link groups
@@ -88,13 +93,13 @@ page = ["HTML"]
 
 [[menus.footerHelp]]
   name = "Plačila"
-  url = "#placila"
+  url = "/#placila"
   weight = 10
 [[menus.footerHelp]]
   name = "Pogosta vprašanja"
-  url = "#faq"
+  url = "/#faq"
   weight = 20
 [[menus.footerHelp]]
   name = "Kontakt"
-  url = "#podpora"
+  url = "/#podpora"
   weight = 30

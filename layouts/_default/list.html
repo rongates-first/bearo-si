@@ -1,21 +1,52 @@
 {{ define "main" }}
-<section class="content-page">
-  <div class="content-page__container">
-    <header class="content-page__header">
-      <h1 class="content-page__title">{{ .Title }}</h1>
-      {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+<section class="page">
+  <div class="page__bg" aria-hidden="true">
+    <span class="blob blob--raspberry blob--lg float-slow"></span>
+    <span class="blob blob--lemon    blob--md float-mid"></span>
+    <span class="blob blob--mint     blob--md float-fast"></span>
+  </div>
+
+  <div class="page__inner">
+    <nav class="page__breadcrumb" aria-label="Drobtinčna sled">
+      <a href="{{ "/" | relURL }}">Domov</a>
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">{{ .Title }}</span>
+    </nav>
+
+    <header class="page__header">
+      <p class="eyebrow">Pregled</p>
+      <h1 class="page__title">{{ .Title }}</h1>
+      {{ with .Content }}<div class="page__lead">{{ . }}</div>{{ end }}
     </header>
 
-    <ul class="content-page__list">
+    {{ if .Pages }}
+    <ul class="page__list">
       {{ range .Pages }}
         <li>
           <a href="{{ .RelPermalink }}">
-            <span class="content-page__list-title">{{ .Title }}</span>
-            {{ with .Params.lead }}<span class="content-page__list-lead">{{ . }}</span>{{ end }}
+            <span class="page__list-title">{{ .Title }}</span>
+            {{ with .Params.lead }}<span class="page__list-lead">{{ . }}</span>{{ end }}
+            <span class="page__list-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
           </a>
         </li>
       {{ end }}
     </ul>
+    {{ end }}
+
+    <div class="page__cta">
+      <a class="btn btn--primary btn--xl btn--shine" href="{{ "/" | relURL }}">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 5 5 12 12 19"></polyline>
+        </svg>
+        <span>Nazaj na Bearo Casino</span>
+      </a>
+    </div>
   </div>
 </section>
 {{ end }}

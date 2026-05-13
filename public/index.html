@@ -86,16 +86,23 @@
 
 
 
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Bearo Casino | Bonusi, igralni avtomati in live casino",
+  "@id": "http:\/\/localhost:1313\/#website",
   "url": "http:\/\/localhost:1313\/",
+  "name": "\"Bearo Casino | Bonusi, igralni avtomati in live casino\"",
+  "description": "\"Odkrijte Bearo Casino s spletnimi igralnimi avtomati, live casinom, varnimi plačili in sladkimi bonusi v pisani jelly atmosferi.\"",
   "inLanguage": "sl-SI",
+  "publisher": { "@id": "http:\/\/localhost:1313\/#organization" },
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "http:\/\/localhost:1313\/?s={search_term_string}",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http:\/\/localhost:1313\/?s={search_term_string}"
+    },
     "query-input": "required name=search_term_string"
   }
 }
@@ -104,9 +111,21 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "http:\/\/localhost:1313\/#organization",
   "name": "Bearo Casino",
-  "url": "https://bearo.si/",
-  "logo": "https://bearo.si/img/logo-bearo.svg",
+  "alternateName": "Bearo.si",
+  "url": "http:\/\/localhost:1313\/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "\"http://localhost:1313/img/logo-bearo.png\"",
+    "width": 1024,
+    "height": 1024
+  },
+  "image": "\"http://localhost:1313/img/hero-bears.jpg\"",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Slovenia"
+  },
   "sameAs": [
     "https://www.facebook.com/bearocasino",
     "https://www.instagram.com/bearocasino"
@@ -114,6 +133,7 @@
   "contactPoint": [{
     "@type": "ContactPoint",
     "contactType": "customer support",
+    "email": "podpora@bearo.si",
     "areaServed": "SI",
     "availableLanguage": ["Slovenian", "English"]
   }]
@@ -122,14 +142,48 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "http:\/\/localhost:1313\/#webpage",
+  "url": "http:\/\/localhost:1313\/",
+  "name": "\"Bearo Casino | Bonusi, igralni avtomati in live casino\"",
+  "description": "\"Odkrijte Bearo Casino s spletnimi igralnimi avtomati, live casinom, varnimi plačili in sladkimi bonusi v pisani jelly atmosferi.\"",
+  "inLanguage": "sl-SI",
+  "isPartOf": { "@id": "http:\/\/localhost:1313\/#website" },
+  "about": { "@id": "http:\/\/localhost:1313\/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "\"http://localhost:1313/img/hero-bears.jpg\""
+  },
+  "breadcrumb": { "@id": "http:\/\/localhost:1313\/#breadcrumb" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "http:\/\/localhost:1313\/#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Domov",
+      "item": "http:\/\/localhost:1313\/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "FAQPage",
+  "@id": "http:\/\/localhost:1313\/#faq",
   "mainEntity": [
     {
       "@type": "Question",
       "name": "Kakšen bonus dobi novi igralec na Bearo Casino?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Novi igralec na Bearo Casino prejme 200% bonus dobrodošlice do €7.000, 25 brezplačnih vrtljajev in 5% cashback. Za bonus veljajo standardni pogoji stav."
+        "text": "Novi igralec na Bearo Casino prejme 200% bonus dobrodošlice do €7.000, 25 brezplačnih vrtljajev in 5% cashback. Za bonus veljajo standardni pogoji stav (wagering)."
       }
     },
     {
@@ -154,6 +208,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Registracija na Bearo.si zahteva veljaven e-naslov, potrditev starosti 18+ in nekaj osnovnih podatkov. Prijava nato poteka prek izbranega gesla ali povezanega računa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kakšen je wagering (mnogokratnik stav) za Bearo bonus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Privzeti mnogokratnik za bonuse dobrodošlice je x35, ki velja na vsoto pologa in bonusa. Pri kampanjah z drugimi pogoji je mnogokratnik naveden v podrobnostih posameznega bonusa."
       }
     }
   ]
@@ -182,24 +244,24 @@
     <nav class="nav-links" aria-label="Glavna navigacija">
       <ul>
         
-          <li><a href="#domov" class="nav-link">Domov</a></li>
+          <li><a href="/" class="nav-link">Domov</a></li>
         
-          <li><a href="#igre" class="nav-link">Igre</a></li>
+          <li><a href="/#igre" class="nav-link">Igre</a></li>
         
-          <li><a href="#bonusi" class="nav-link">Bonusi</a></li>
+          <li><a href="/#bonusi" class="nav-link">Bonusi</a></li>
         
-          <li><a href="#vip" class="nav-link">VIP Klub</a></li>
+          <li><a href="/#vip" class="nav-link">VIP Klub</a></li>
         
-          <li><a href="#placila" class="nav-link">Plačila</a></li>
+          <li><a href="/#placila" class="nav-link">Plačila</a></li>
         
-          <li><a href="#podpora" class="nav-link">Podpora</a></li>
+          <li><a href="/#podpora" class="nav-link">Podpora</a></li>
         
       </ul>
     </nav>
 
     <div class="nav-cta">
-      <a class="btn btn--ghost" href="#prijava">Prijava</a>
-      <a class="btn btn--primary btn--shine" href="#registracija">
+      <a class="btn btn--ghost" href="/#prijava">Prijava</a>
+      <a class="btn btn--primary btn--shine" href="/play" target="_blank" rel="nofollow sponsored noopener">
         <span>Registracija</span>
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -219,22 +281,22 @@
     <div class="nav-mobile__panel">
       <ul>
         
-          <li><a href="#domov">Domov</a></li>
+          <li><a href="/">Domov</a></li>
         
-          <li><a href="#igre">Igre</a></li>
+          <li><a href="/#igre">Igre</a></li>
         
-          <li><a href="#bonusi">Bonusi</a></li>
+          <li><a href="/#bonusi">Bonusi</a></li>
         
-          <li><a href="#vip">VIP Klub</a></li>
+          <li><a href="/#vip">VIP Klub</a></li>
         
-          <li><a href="#placila">Plačila</a></li>
+          <li><a href="/#placila">Plačila</a></li>
         
-          <li><a href="#podpora">Podpora</a></li>
+          <li><a href="/#podpora">Podpora</a></li>
         
       </ul>
       <div class="nav-mobile__cta">
-        <a class="btn btn--ghost btn--block" href="#prijava">Prijava</a>
-        <a class="btn btn--primary btn--block" href="#registracija">Registracija</a>
+        <a class="btn btn--ghost btn--block" href="/#prijava">Prijava</a>
+        <a class="btn btn--primary btn--block" href="/play" target="_blank" rel="nofollow sponsored noopener">Registracija</a>
       </div>
     </div>
   </details>
@@ -271,7 +333,7 @@
       </p>
 
       <div class="hero__cta">
-        <a class="btn btn--primary btn--xl btn--shine" href="#registracija">
+        <a class="btn btn--primary btn--xl btn--shine" href="/play" target="_blank" rel="nofollow sponsored noopener">
           <span>Prevzemi bonus</span>
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="3" y="8" width="18" height="4" rx="1"></rect>
@@ -388,7 +450,7 @@
           <li><i class="fa-solid fa-circle-check"></i> 5% tedenski cashback</li>
         </ul>
         <p class="bonus-card__small">Velja za nove igralce 18+. Pogoji stav (wagering) veljajo.</p>
-        <a class="btn btn--primary btn--shine" href="#registracija">
+        <a class="btn btn--primary btn--shine" href="/play" target="_blank" rel="nofollow sponsored noopener">
           <span>Aktiviraj 200% bonus</span>
           <i class="fa-solid fa-arrow-right"></i>
         </a>
@@ -406,7 +468,7 @@
           <li><i class="fa-solid fa-circle-check"></i> 1 dodatni bonus paket</li>
         </ul>
         <p class="bonus-card__small">Bonus je na voljo po prvem aktiviranem računu. 18+.</p>
-        <a class="btn btn--ghost btn--shine" href="#registracija">
+        <a class="btn btn--ghost btn--shine" href="/play" target="_blank" rel="nofollow sponsored noopener">
           <span>Več o paketu</span>
           <i class="fa-solid fa-arrow-right"></i>
         </a>
@@ -467,7 +529,7 @@
                 </div>
                 <h3 class="game-tile__title">Jelly Reels</h3>
                 <p class="game-tile__tag">Sladka klasika</p>
-                <a class="game-tile__cta" href="#registracija">
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener">
                   <span>Igraj</span>
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14">
                     <polygon points="6,4 20,12 6,20"></polygon>
@@ -486,7 +548,7 @@
                 </div>
                 <h3 class="game-tile__title">Sugar Vault</h3>
                 <p class="game-tile__tag">Megaways</p>
-                <a class="game-tile__cta" href="#registracija">
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener">
                   <span>Igraj</span>
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14">
                     <polygon points="6,4 20,12 6,20"></polygon>
@@ -505,7 +567,7 @@
                 </div>
                 <h3 class="game-tile__title">Candy Crown</h3>
                 <p class="game-tile__tag">Bonus Buy</p>
-                <a class="game-tile__cta" href="#registracija">
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener">
                   <span>Igraj</span>
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14">
                     <polygon points="6,4 20,12 6,20"></polygon>
@@ -524,7 +586,7 @@
                 </div>
                 <h3 class="game-tile__title">Mint Wilds</h3>
                 <p class="game-tile__tag">Hold &amp; Spin</p>
-                <a class="game-tile__cta" href="#registracija">
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener">
                   <span>Igraj</span>
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14">
                     <polygon points="6,4 20,12 6,20"></polygon>
@@ -543,7 +605,7 @@
                 </div>
                 <h3 class="game-tile__title">Berry Burst</h3>
                 <p class="game-tile__tag">Cluster</p>
-                <a class="game-tile__cta" href="#registracija">
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener">
                   <span>Igraj</span>
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14">
                     <polygon points="6,4 20,12 6,20"></polygon>
@@ -562,7 +624,7 @@
                 </div>
                 <h3 class="game-tile__title">Neon Drops</h3>
                 <p class="game-tile__tag">Avalanche</p>
-                <a class="game-tile__cta" href="#registracija">
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener">
                   <span>Igraj</span>
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14">
                     <polygon points="6,4 20,12 6,20"></polygon>
@@ -583,7 +645,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-circle-notch"></i></div>
                 <h3 class="game-tile__title">European Roulette</h3>
                 <p class="game-tile__tag">Klasika</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
               <article class="game-tile game-tile--berry">
@@ -591,7 +653,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-circle-notch"></i></div>
                 <h3 class="game-tile__title">French Roulette</h3>
                 <p class="game-tile__tag">La Partage</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
               <article class="game-tile game-tile--lemon">
@@ -599,7 +661,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-stopwatch"></i></div>
                 <h3 class="game-tile__title">Speed Roulette</h3>
                 <p class="game-tile__tag">Hitra igra</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
               <article class="game-tile game-tile--neon-pink">
@@ -607,7 +669,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
                 <h3 class="game-tile__title">Lightning Roulette</h3>
                 <p class="game-tile__tag">Multiplikator</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
           </div>
@@ -623,7 +685,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-club"></i></div>
                 <h3 class="game-tile__title">Classic Blackjack</h3>
                 <p class="game-tile__tag">Standard</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
               <article class="game-tile game-tile--raspberry">
@@ -631,7 +693,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-spade"></i></div>
                 <h3 class="game-tile__title">Vegas Strip BJ</h3>
                 <p class="game-tile__tag">8 deck</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
               <article class="game-tile game-tile--mint">
@@ -639,7 +701,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-heart"></i></div>
                 <h3 class="game-tile__title">Free Bet BJ</h3>
                 <p class="game-tile__tag">Side bet</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
               <article class="game-tile game-tile--lemon">
@@ -647,7 +709,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-shuffle"></i></div>
                 <h3 class="game-tile__title">Switch Blackjack</h3>
                 <p class="game-tile__tag">Twin</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
           </div>
@@ -663,7 +725,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-tower-broadcast"></i></div>
                 <h3 class="game-tile__title">Sweet Bonanza Live</h3>
                 <p class="game-tile__tag">Game show</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
               <article class="game-tile game-tile--lemon">
@@ -671,7 +733,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-circle-dot"></i></div>
                 <h3 class="game-tile__title">Mega Wheel</h3>
                 <p class="game-tile__tag">Wheel</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
               <article class="game-tile game-tile--neon-pink">
@@ -679,7 +741,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
                 <h3 class="game-tile__title">Crazy Time Studio</h3>
                 <p class="game-tile__tag">Multiplay</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
               <article class="game-tile game-tile--berry">
@@ -687,7 +749,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-star"></i></div>
                 <h3 class="game-tile__title">Dream Catcher</h3>
                 <p class="game-tile__tag">Wheel</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
           </div>
@@ -703,7 +765,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-gem"></i></div>
                 <h3 class="game-tile__title">Jelly Jackpot</h3>
                 <p class="game-tile__tag">Progressive</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
               <article class="game-tile game-tile--berry">
@@ -711,7 +773,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-coins"></i></div>
                 <h3 class="game-tile__title">Berry Millions</h3>
                 <p class="game-tile__tag">Daily drop</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
               <article class="game-tile game-tile--raspberry">
@@ -719,7 +781,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-trophy"></i></div>
                 <h3 class="game-tile__title">Sugar Mega</h3>
                 <p class="game-tile__tag">Mega pool</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
               <article class="game-tile game-tile--neon-pink">
@@ -727,7 +789,7 @@
                 <div class="game-tile__icon" aria-hidden="true"><i class="fa-solid fa-stopwatch"></i></div>
                 <h3 class="game-tile__title">Neon Hourly</h3>
                 <p class="game-tile__tag">Must drop</p>
-                <a class="game-tile__cta" href="#registracija"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
+                <a class="game-tile__cta" href="/play" target="_blank" rel="nofollow sponsored noopener"><span>Igraj</span> <i class="fa-solid fa-play"></i></a>
               </article>
             
           </div>
@@ -915,6 +977,100 @@
 
 
 
+<section id="informacije" class="section section--cream section--narrow">
+  <div class="section__inner">
+    <header class="section__head">
+      <p class="eyebrow">Informacije za igralce</p>
+      <h2 class="section__title">Vse, kar je dobro vedeti pred igro</h2>
+      <p class="section__lead">
+        Pregledni dokumenti o bonusih, pogojih uporabe, varstvu podatkov in orodjih odgovornega igranja. Vse na enem mestu in v slovenščini.
+      </p>
+    </header>
+
+    <div class="info-grid">
+      <a class="info-card info-card--mint" href="/odgovorno-igranje/">
+        <div class="info-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3z"></path>
+            <path d="M9 12l2 2 4-4"></path>
+          </svg>
+        </div>
+        <h3 class="info-card__title">Odgovorno igranje</h3>
+        <p class="info-card__desc">Orodja za omejitev pologa, časa seje in samoizključitve. Pomoč in nasvet, kdaj poiskati podporo.</p>
+        <span class="info-card__cta" aria-hidden="true">
+          Več
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </span>
+      </a>
+
+      <a class="info-card info-card--lemon" href="/pravila-bonusov/">
+        <div class="info-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="8" width="18" height="4" rx="1"></rect>
+            <path d="M5 12v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"></path>
+            <path d="M12 8v14"></path>
+            <path d="M12 8H8a2.5 2.5 0 0 1 0-5c3 0 4 5 4 5z"></path>
+            <path d="M12 8h4a2.5 2.5 0 0 0 0-5c-3 0-4 5-4 5z"></path>
+          </svg>
+        </div>
+        <h3 class="info-card__title">Pravila bonusov</h3>
+        <p class="info-card__desc">Pogoji stav, časovna veljavnost, prispevek iger in podrobnosti vseh bonusov dobrodošlice.</p>
+        <span class="info-card__cta" aria-hidden="true">
+          Več
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </span>
+      </a>
+
+      <a class="info-card info-card--raspberry" href="/pogoji/">
+        <div class="info-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="8" y1="13" x2="16" y2="13"></line>
+            <line x1="8" y1="17" x2="14" y2="17"></line>
+          </svg>
+        </div>
+        <h3 class="info-card__title">Pogoji uporabe</h3>
+        <p class="info-card__desc">Pravila o registraciji, plačilih, izplačilih in zaprtju računa. Vse zakonske podrobnosti platforme.</p>
+        <span class="info-card__cta" aria-hidden="true">
+          Več
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </span>
+      </a>
+
+      <a class="info-card info-card--berry" href="/zasebnost/">
+        <div class="info-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            <circle cx="12" cy="16" r="1.5" fill="currentColor"></circle>
+          </svg>
+        </div>
+        <h3 class="info-card__title">Politika zasebnosti</h3>
+        <p class="info-card__desc">Kako so osebni podatki obravnavani v skladu z GDPR in kakšne pravice ima vsak uporabnik.</p>
+        <span class="info-card__cta" aria-hidden="true">
+          Več
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
 <section id="registracija" class="cta-banner">
   <div class="cta-banner__bg" aria-hidden="true">
     <span class="blob blob--lemon blob--lg float-mid"></span>
@@ -925,7 +1081,7 @@
     <p class="eyebrow eyebrow--cream">Pridruži se Bearo Casino</p>
     <h2 class="cta-banner__title">Sladke nagrade čakajo. Začni z 200% bonusom in 25 brezplačnimi vrtljaji.</h2>
     <div class="cta-banner__cta">
-      <a class="btn btn--primary btn--xl btn--shine" href="#registracija">
+      <a class="btn btn--primary btn--xl btn--shine" href="/play" target="_blank" rel="nofollow sponsored noopener">
         <span>Začni igrati</span>
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -981,11 +1137,11 @@
       <div class="site-footer__col">
         <h3>Igre</h3>
         <ul>
-          <li><a href="#igralni-avtomati">Igralni avtomati</a></li>
-          <li><a href="#ruleta">Ruleta</a></li>
-          <li><a href="#blackjack">Blackjack</a></li>
-          <li><a href="#live-casino">Live Casino</a></li>
-          <li><a href="#jackpoti">Jackpoti</a></li>
+          <li><a href="/#igralni-avtomati">Igralni avtomati</a></li>
+          <li><a href="/#ruleta">Ruleta</a></li>
+          <li><a href="/#blackjack">Blackjack</a></li>
+          <li><a href="/#live-casino">Live Casino</a></li>
+          <li><a href="/#jackpoti">Jackpoti</a></li>
         </ul>
       </div>
       <div class="site-footer__col">

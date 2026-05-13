@@ -1259,36 +1259,374 @@ button { font: inherit; }
   .site-footer__cols  { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ---------- Content pages ---------- */
-.content-page { padding: 80px 24px; background: var(--cream); }
-.content-page__container { max-width: 760px; margin: 0 auto; }
-.content-page__title {
+/* ---------- Content pages (.page — used by single.html + list.html) ----------
+   Visual aim: keep the playful Bearo aesthetic on legal / informational
+   plates without overwhelming the dense prose. Background carries soft
+   pastel gradients + decorative jelly blobs; the actual reading content
+   sits inside a clean cream card with crisp typography. */
+
+.page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(48px, 8vw, 100px) 24px clamp(72px, 10vw, 130px);
+  background:
+    radial-gradient(800px 500px at 90% 5%,  rgba(255, 210, 63, .25), transparent 60%),
+    radial-gradient(700px 500px at 0% 30%,  rgba(125, 230, 187, .22), transparent 65%),
+    radial-gradient(900px 500px at 50% 110%, rgba(255, 122, 174, .15), transparent 65%),
+    linear-gradient(180deg, var(--cream) 0%, #FFF1E0 100%);
+}
+.page__bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .45; overflow: hidden; }
+.page__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.page__breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 247, 232, .85);
+  border: 1px solid rgba(122, 46, 150, .12);
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  color: var(--plum-soft);
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.page__breadcrumb a {
+  color: var(--raspberry);
+  font-weight: 600;
+  transition: color .2s ease;
+}
+.page__breadcrumb a:hover { color: var(--raspberry-deep); }
+.page__breadcrumb span[aria-current] { color: var(--plum); font-weight: 500; }
+
+.page__header { margin-bottom: 32px; }
+.page__title {
   font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 42px);
   font-weight: 700;
-  margin: 8px 0 12px;
+  font-size: clamp(32px, 5.5vw, 52px);
+  line-height: 1.04;
+  letter-spacing: -.015em;
+  color: var(--plum);
+  margin: 14px 0 18px;
+}
+.page__lead {
+  font-size: clamp(17px, 1.6vw, 20px);
+  color: var(--plum-soft);
+  line-height: 1.55;
+  max-width: 720px;
+  margin: 0;
+}
+
+/* Table of contents (rendered by Hugo as <nav id="TableOfContents">) */
+.page__toc {
+  background: linear-gradient(180deg, #fff 0%, var(--cream) 100%);
+  border: 1px solid rgba(255, 61, 110, .15);
+  border-radius: var(--radius-jelly);
+  padding: 22px 26px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-cream);
+  position: relative;
+}
+.page__toc::before {
+  content: "";
+  position: absolute;
+  top: -4px; left: 24px;
+  width: 60px; height: 4px;
+  background: linear-gradient(90deg, var(--raspberry), var(--lemon));
+  border-radius: 4px;
+}
+.page__toc h2 {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--raspberry);
+  margin: 0 0 12px;
+}
+.page__toc nav#TableOfContents ul,
+.page__toc nav#TableOfContents ol { list-style: none; margin: 0; padding: 0; }
+.page__toc nav#TableOfContents li {
+  position: relative;
+  padding: 4px 0 4px 22px;
+}
+.page__toc nav#TableOfContents li::before {
+  content: "•";
+  position: absolute; left: 6px; top: 4px;
+  color: var(--lemon-deep);
+  font-weight: 700;
+}
+.page__toc nav#TableOfContents a {
+  color: var(--plum);
+  font-weight: 500;
+  transition: color .2s ease;
+}
+.page__toc nav#TableOfContents a:hover { color: var(--raspberry); }
+.page__toc nav#TableOfContents ul ul {
+  padding-left: 12px;
+  margin-top: 2px;
+}
+.page__toc nav#TableOfContents ul ul li::before {
+  content: "›";
+  color: var(--berry);
+  font-weight: 600;
+}
+
+/* Body prose styled inside a cream card */
+.page__body.prose {
+  background: rgba(255, 247, 232, .65);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(122, 46, 150, .08);
+  border-radius: var(--radius-jelly);
+  padding: clamp(28px, 4vw, 48px);
+  box-shadow: var(--shadow-cream);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--plum-soft);
+}
+.page__body.prose > *:first-child { margin-top: 0; }
+.page__body.prose > *:last-child  { margin-bottom: 0; }
+.page__body.prose p { margin: 0 0 16px; }
+.page__body.prose strong { color: var(--plum); font-weight: 600; }
+.page__body.prose em { color: var(--berry); font-style: normal; font-weight: 500; }
+
+.page__body.prose a {
+  color: var(--raspberry);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 61, 110, .3);
+  transition: text-decoration-color .2s ease, color .2s ease;
+}
+.page__body.prose a:hover {
+  color: var(--raspberry-deep);
+  text-decoration-color: var(--raspberry);
+}
+
+.page__body.prose h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -.005em;
+  color: var(--plum);
+  margin: 36px 0 12px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(122, 46, 150, .12);
+}
+.page__body.prose h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.page__body.prose h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(18px, 1.8vw, 20px);
+  color: var(--plum);
+  margin: 22px 0 8px;
+}
+
+.page__body.prose ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+}
+.page__body.prose ul li {
+  position: relative;
+  padding: 0 0 0 26px;
+  margin: 8px 0;
+}
+.page__body.prose ul li::before {
+  content: "";
+  position: absolute;
+  left: 6px; top: 11px;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--raspberry), var(--raspberry-deep));
+  box-shadow: 0 2px 4px rgba(255, 61, 110, .35);
+}
+.page__body.prose ol {
+  margin: 0 0 18px;
+  padding-left: 24px;
+}
+.page__body.prose ol li { margin: 8px 0; padding-left: 4px; }
+.page__body.prose ol li::marker {
+  color: var(--raspberry);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.page__body.prose blockquote {
+  margin: 18px 0;
+  padding: 14px 22px;
+  background: rgba(255, 210, 63, .18);
+  border-left: 4px solid var(--lemon-deep);
+  border-radius: 0 14px 14px 0;
   color: var(--plum);
 }
-.content-page__lead { color: var(--plum-soft); font-size: 18px; line-height: 1.55; margin: 0 0 22px; }
-.content-page__back { margin-top: 36px; }
-.content-page__list { list-style: none; padding: 0; display: grid; gap: 12px; }
-.content-page__list a {
-  display: grid; gap: 4px;
-  background: #fff;
-  border-radius: 18px;
-  padding: 16px 18px;
-  border: 1px solid rgba(122, 46, 150, .1);
-  transition: all .2s ease;
+.page__body.prose code {
+  background: rgba(255, 61, 110, .1);
+  color: var(--raspberry-deep);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: .92em;
 }
-.content-page__list a:hover { transform: translateY(-2px); box-shadow: var(--shadow-cream); border-color: var(--neon-pink); }
-.content-page__list-title { font-family: var(--font-display); font-weight: 600; color: var(--plum); }
-.content-page__list-lead  { color: var(--plum-soft); font-size: 14px; }
+
+/* List layout for taxonomy/list pages */
+.page__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+.page__list a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid rgba(122, 46, 150, .1);
+  border-radius: 22px;
+  padding: 18px 22px;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.page__list a:hover {
+  transform: translateY(-3px);
+  border-color: var(--neon-pink);
+  box-shadow: var(--shadow-cream);
+}
+.page__list-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--plum);
+  font-size: 18px;
+  display: block;
+}
+.page__list-lead {
+  color: var(--plum-soft);
+  font-size: 14px;
+  display: block;
+  margin-top: 4px;
+}
+.page__list-arrow {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--raspberry), var(--raspberry-deep));
+  color: #fff;
+  display: grid; place-items: center;
+  transition: transform .2s ease;
+}
+.page__list-arrow svg { width: 16px; height: 16px; }
+.page__list a:hover .page__list-arrow { transform: translateX(3px); }
+
+.page__cta {
+  margin-top: 44px;
+  display: flex;
+  justify-content: center;
+}
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ---------- Informacije za igralce (link cards to legal/info pages) ---------- */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+.info-card {
+  position: relative;
+  display: block;
+  background: #fff;
+  border-radius: var(--radius-jelly);
+  padding: 24px 26px 22px;
+  border: 1px solid rgba(122, 46, 150, .08);
+  box-shadow: var(--shadow-cream);
+  transition: transform .35s cubic-bezier(.2,.9,.3,1.2), box-shadow .3s ease, border-color .25s ease;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--plum);
+}
+.info-card::before {
+  /* Soft accent wash in the top-right, color depends on the variant. */
+  content: "";
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: var(--info-accent, var(--raspberry));
+  opacity: .12;
+  z-index: -1;
+  transition: opacity .3s ease, transform .4s ease;
+}
+.info-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-jelly);
+  border-color: var(--info-accent, var(--raspberry));
+}
+.info-card:hover::before { opacity: .22; transform: scale(1.1); }
+
+.info-card__icon {
+  width: 52px; height: 52px;
+  border-radius: 16px;
+  display: grid; place-items: center;
+  background: linear-gradient(180deg, var(--info-accent, var(--raspberry)), var(--info-accent-deep, var(--raspberry-deep)));
+  color: #fff;
+  margin-bottom: 16px;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .12);
+}
+.info-card__icon svg { width: 22px; height: 22px; }
+
+.info-card__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--plum);
+  margin: 0 0 8px;
+  letter-spacing: -.005em;
+}
+.info-card__desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--plum-soft);
+  margin: 0 0 18px;
+}
+.info-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--info-accent, var(--raspberry));
+  transition: gap .2s ease;
+}
+.info-card__cta svg { width: 14px; height: 14px; }
+.info-card:hover .info-card__cta { gap: 10px; }
+
+/* Variants tint the icon + accent halo + CTA color in the project palette. */
+.info-card--mint      { --info-accent: var(--mint-deep);      --info-accent-deep: #2A9F76; }
+.info-card--lemon     { --info-accent: var(--lemon-deep);     --info-accent-deep: #C99A00; }
+.info-card--raspberry { --info-accent: var(--raspberry);      --info-accent-deep: var(--raspberry-deep); }
+.info-card--berry     { --info-accent: var(--berry);          --info-accent-deep: var(--berry-deep); }
+
+/* Lemon variant: the icon gradient is too light for white SVG strokes,
+   bump contrast by darkening the icon foreground. */
+.info-card--lemon .info-card__icon { color: var(--berry-deep); }
+
 
 /* ---------- Inline SVG icons (Font Awesome replacement in hero/CTA) ---------- */
 /* These are bundled inline so they never depend on the Font Awesome CDN
