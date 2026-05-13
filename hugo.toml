@@ -73,33 +73,7 @@ page = ["HTML"]
   url = "/#podpora"
   weight = 60
 
-# Footer link groups
-[[menus.footerLegal]]
-  name = "Pogoji uporabe"
-  url = "/pogoji/"
-  weight = 10
-[[menus.footerLegal]]
-  name = "Politika zasebnosti"
-  url = "/zasebnost/"
-  weight = 20
-[[menus.footerLegal]]
-  name = "Pravila bonusov"
-  url = "/pravila-bonusov/"
-  weight = 30
-[[menus.footerLegal]]
-  name = "Odgovorno igranje"
-  url = "/odgovorno-igranje/"
-  weight = 40
-
-[[menus.footerHelp]]
-  name = "Plačila"
-  url = "/#placila"
-  weight = 10
-[[menus.footerHelp]]
-  name = "Pogosta vprašanja"
-  url = "/#faq"
-  weight = 20
-[[menus.footerHelp]]
-  name = "Kontakt"
-  url = "/#podpora"
-  weight = 30
+# Footer links are hardcoded in layouts/partials/footer.html — Hugo's
+# `[[menus.X]]` syntax was unreliable for non-`main` menu names across
+# Hugo versions, leaving the rendered columns empty even when config
+# looked correct. Hardcoded `<li>` tags are simpler and bullet-proof.
