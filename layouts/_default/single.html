@@ -58,62 +58,54 @@
   </div>
 </article>
 
-{{/* ---- JSON-LD: Article + BreadcrumbList ---- */}}
+{{/* ---- JSON-LD: Article + BreadcrumbList ----
+     Built as Hugo dicts and serialized with a single `jsonify`. This is the
+     only reliable pattern: per-field `{{ x | jsonify }}` inside <script>
+     gets context-escaped twice by html/template and produces broken
+     "\"double-quoted\"" values. Serializing the whole map once + safeHTML
+     sidesteps that entirely. */}}
+{{- $org := dict
+  "@type" "Organization"
+  "name" "Bearo Casino"
+  "url" site.BaseURL
+-}}
+{{- $publisher := dict
+  "@type" "Organization"
+  "name" "Bearo Casino"
+  "url" site.BaseURL
+  "logo" (dict
+    "@type" "ImageObject"
+    "url" (absURL "img/logo-bearo.png")
+    "width" 1024
+    "height" 1024
+  )
+-}}
+{{- $article := dict
+  "@context" "https://schema.org"
+  "@type" "Article"
+  "headline" .Title
+  "description" (.Description | default .Summary | default site.Params.description)
+  "datePublished" ($pub.Format "2006-01-02")
+  "dateModified" ($mod.Format "2006-01-02")
+  "inLanguage" site.LanguageCode
+  "isPartOf" (dict "@type" "WebSite" "name" site.Title "url" site.BaseURL)
+  "author" $org
+  "publisher" $publisher
+  "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+  "image" (absURL site.Params.ogImage)
+-}}
+{{- $crumbs := dict
+  "@context" "https://schema.org"
+  "@type" "BreadcrumbList"
+  "itemListElement" (slice
+    (dict "@type" "ListItem" "position" 1 "name" "Domov" "item" site.BaseURL)
+    (dict "@type" "ListItem" "position" 2 "name" .Title "item" .Permalink)
+  )
+-}}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": {{ .Title | jsonify | safeHTML }},
-  "description": {{ (.Description | default .Summary | default site.Params.description) | jsonify | safeHTML }},
-  "datePublished": {{ ($pub.Format "2006-01-02") | jsonify | safeHTML }},
-  "dateModified": {{ ($mod.Format "2006-01-02") | jsonify | safeHTML }},
-  "inLanguage": "sl-SI",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": {{ site.Title | jsonify | safeHTML }},
-    "url": {{ site.BaseURL | jsonify | safeHTML }}
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "Bearo Casino",
-    "url": {{ site.BaseURL | jsonify | safeHTML }}
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Bearo Casino",
-    "url": {{ site.BaseURL | jsonify | safeHTML }},
-    "logo": {
-      "@type": "ImageObject",
-      "url": {{ (absURL "img/logo-bearo.png") | jsonify | safeHTML }},
-      "width": 1024,
-      "height": 1024
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": {{ .Permalink | jsonify | safeHTML }}
-  },
-  "image": {{ (absURL site.Params.ogImage) | jsonify | safeHTML }}
-}
+{{ $article | jsonify (dict "indent" "  ") | safeHTML }}
 </script>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Domov",
-      "item": {{ site.BaseURL | jsonify | safeHTML }}
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": {{ .Title | jsonify | safeHTML }},
-      "item": {{ .Permalink | jsonify | safeHTML }}
-    }
-  ]
-}
+{{ $crumbs | jsonify (dict "indent" "  ") | safeHTML }}
 </script>
 {{ end }}

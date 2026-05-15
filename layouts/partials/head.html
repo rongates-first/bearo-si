@@ -91,140 +91,112 @@
 
 <!-- Structured data -->
 {{ if $isHome }}
-{{/* Homepage gets a full schema set: WebSite + Organization + WebPage +
-     FAQPage. Inner pages get Article + BreadcrumbList from single.html. */}}
+{{/* Homepage schema set. Built as Hugo dicts and serialized with a single
+     `jsonify` per block — per-field `{{ x | jsonify }}` inside <script> gets
+     context-escaped twice by html/template and yields broken
+     "\"double-quoted\"" values. Whole-map jsonify + safeHTML is the only
+     reliable pattern. */}}
+{{- $base := site.BaseURL -}}
+{{- $orgRef  := dict "@id" (printf "%s#organization" $base) -}}
+{{- $siteRef := dict "@id" (printf "%s#website" $base) -}}
+
+{{- $website := dict
+  "@context" "https://schema.org"
+  "@type" "WebSite"
+  "@id" (printf "%s#website" $base)
+  "url" $base
+  "name" site.Title
+  "description" site.Params.description
+  "inLanguage" site.LanguageCode
+  "publisher" $orgRef
+  "potentialAction" (dict
+    "@type" "SearchAction"
+    "target" (dict "@type" "EntryPoint" "urlTemplate" (printf "%s?s={search_term_string}" $base))
+    "query-input" "required name=search_term_string"
+  )
+-}}
+
+{{- $organization := dict
+  "@context" "https://schema.org"
+  "@type" "Organization"
+  "@id" (printf "%s#organization" $base)
+  "name" "Bearo Casino"
+  "alternateName" "Bearo.si"
+  "url" $base
+  "logo" (dict "@type" "ImageObject" "url" (absURL "img/logo-bearo.png") "width" 1024 "height" 1024)
+  "image" (absURL site.Params.ogImage)
+  "areaServed" (dict "@type" "Country" "name" "Slovenia")
+  "sameAs" (slice
+    (printf "https://www.facebook.com/%s" site.Params.social.facebook)
+    (printf "https://www.instagram.com/%s" site.Params.social.instagram)
+  )
+  "contactPoint" (slice (dict
+    "@type" "ContactPoint"
+    "contactType" "customer support"
+    "email" "podpora@bearo.si"
+    "areaServed" "SI"
+    "availableLanguage" (slice "Slovenian" "English")
+  ))
+-}}
+
+{{- $webpage := dict
+  "@context" "https://schema.org"
+  "@type" "WebPage"
+  "@id" (printf "%s#webpage" $base)
+  "url" $base
+  "name" site.Title
+  "description" site.Params.description
+  "inLanguage" site.LanguageCode
+  "isPartOf" $siteRef
+  "about" $orgRef
+  "primaryImageOfPage" (dict "@type" "ImageObject" "url" (absURL site.Params.ogImage))
+  "breadcrumb" (dict "@id" (printf "%s#breadcrumb" $base))
+-}}
+
+{{- $breadcrumb := dict
+  "@context" "https://schema.org"
+  "@type" "BreadcrumbList"
+  "@id" (printf "%s#breadcrumb" $base)
+  "itemListElement" (slice
+    (dict "@type" "ListItem" "position" 1 "name" "Domov" "item" $base)
+  )
+-}}
+
+{{- $faq := dict
+  "@context" "https://schema.org"
+  "@type" "FAQPage"
+  "@id" (printf "%s#faq" $base)
+  "mainEntity" (slice
+    (dict "@type" "Question"
+      "name" "Kakšen bonus dobi novi igralec na Bearo Casino?"
+      "acceptedAnswer" (dict "@type" "Answer" "text" "Novi igralec na Bearo Casino prejme 200% bonus dobrodošlice do €7.000, 25 brezplačnih vrtljajev in 5% cashback. Za bonus veljajo standardni pogoji stav (wagering)."))
+    (dict "@type" "Question"
+      "name" "Katere plačilne metode podpira Bearo Casino?"
+      "acceptedAnswer" (dict "@type" "Answer" "text" "Bearo Casino sprejema Visa in Mastercard, bančna nakazila, Skrill, Neteller, Paysafecard ter mobilna plačila Apple Pay in Google Pay, kjer so na voljo."))
+    (dict "@type" "Question"
+      "name" "Ali je Bearo Casino varen za slovenske igralce?"
+      "acceptedAnswer" (dict "@type" "Answer" "text" "Bearo Casino uporablja preverjene plačilne sisteme, šifrirano povezavo in politiko odgovornega igranja, namenjeno zaščiti slovenskih igralcev, starejših od 18 let."))
+    (dict "@type" "Question"
+      "name" "Kako poteka prijava in registracija na Bearo.si?"
+      "acceptedAnswer" (dict "@type" "Answer" "text" "Registracija na Bearo.si zahteva veljaven e-naslov, potrditev starosti 18+ in nekaj osnovnih podatkov. Prijava nato poteka prek izbranega gesla ali povezanega računa."))
+    (dict "@type" "Question"
+      "name" "Kakšen je wagering (mnogokratnik stav) za Bearo bonus?"
+      "acceptedAnswer" (dict "@type" "Answer" "text" "Privzeti mnogokratnik za bonuse dobrodošlice je x35, ki velja na vsoto pologa in bonusa. Pri kampanjah z drugimi pogoji je mnogokratnik naveden v podrobnostih posameznega bonusa."))
+  )
+-}}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "{{ site.BaseURL }}#website",
-  "url": "{{ site.BaseURL }}",
-  "name": {{ site.Title | jsonify | safeHTML }},
-  "description": {{ site.Params.description | jsonify | safeHTML }},
-  "inLanguage": "sl-SI",
-  "publisher": { "@id": "{{ site.BaseURL }}#organization" },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "{{ site.BaseURL }}?s={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
-  }
-}
+{{ $website | jsonify (dict "indent" "  ") | safeHTML }}
 </script>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "{{ site.BaseURL }}#organization",
-  "name": "Bearo Casino",
-  "alternateName": "Bearo.si",
-  "url": "{{ site.BaseURL }}",
-  "logo": {
-    "@type": "ImageObject",
-    "url": {{ (absURL "img/logo-bearo.png") | jsonify | safeHTML }},
-    "width": 1024,
-    "height": 1024
-  },
-  "image": {{ (absURL site.Params.ogImage) | jsonify | safeHTML }},
-  "areaServed": {
-    "@type": "Country",
-    "name": "Slovenia"
-  },
-  "sameAs": [
-    "https://www.facebook.com/{{ site.Params.social.facebook }}",
-    "https://www.instagram.com/{{ site.Params.social.instagram }}"
-  ],
-  "contactPoint": [{
-    "@type": "ContactPoint",
-    "contactType": "customer support",
-    "email": "podpora@bearo.si",
-    "areaServed": "SI",
-    "availableLanguage": ["Slovenian", "English"]
-  }]
-}
+{{ $organization | jsonify (dict "indent" "  ") | safeHTML }}
 </script>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "{{ site.BaseURL }}#webpage",
-  "url": "{{ site.BaseURL }}",
-  "name": {{ site.Title | jsonify | safeHTML }},
-  "description": {{ site.Params.description | jsonify | safeHTML }},
-  "inLanguage": "sl-SI",
-  "isPartOf": { "@id": "{{ site.BaseURL }}#website" },
-  "about": { "@id": "{{ site.BaseURL }}#organization" },
-  "primaryImageOfPage": {
-    "@type": "ImageObject",
-    "url": {{ (absURL site.Params.ogImage) | jsonify | safeHTML }}
-  },
-  "breadcrumb": { "@id": "{{ site.BaseURL }}#breadcrumb" }
-}
+{{ $webpage | jsonify (dict "indent" "  ") | safeHTML }}
 </script>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "@id": "{{ site.BaseURL }}#breadcrumb",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Domov",
-      "item": "{{ site.BaseURL }}"
-    }
-  ]
-}
+{{ $breadcrumb | jsonify (dict "indent" "  ") | safeHTML }}
 </script>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "@id": "{{ site.BaseURL }}#faq",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Kakšen bonus dobi novi igralec na Bearo Casino?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Novi igralec na Bearo Casino prejme 200% bonus dobrodošlice do €7.000, 25 brezplačnih vrtljajev in 5% cashback. Za bonus veljajo standardni pogoji stav (wagering)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Katere plačilne metode podpira Bearo Casino?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Bearo Casino sprejema Visa in Mastercard, bančna nakazila, Skrill, Neteller, Paysafecard ter mobilna plačila Apple Pay in Google Pay, kjer so na voljo."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Ali je Bearo Casino varen za slovenske igralce?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Bearo Casino uporablja preverjene plačilne sisteme, šifrirano povezavo in politiko odgovornega igranja, namenjeno zaščiti slovenskih igralcev, starejših od 18 let."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Kako poteka prijava in registracija na Bearo.si?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Registracija na Bearo.si zahteva veljaven e-naslov, potrditev starosti 18+ in nekaj osnovnih podatkov. Prijava nato poteka prek izbranega gesla ali povezanega računa."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Kakšen je wagering (mnogokratnik stav) za Bearo bonus?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Privzeti mnogokratnik za bonuse dobrodošlice je x35, ki velja na vsoto pologa in bonusa. Pri kampanjah z drugimi pogoji je mnogokratnik naveden v podrobnostih posameznega bonusa."
-      }
-    }
-  ]
-}
+{{ $faq | jsonify (dict "indent" "  ") | safeHTML }}
 </script>
 {{ end }}
