@@ -3,6 +3,8 @@ title: "Pogoji uporabe"
 description: "Pravila uporabe Bearo Casino in storitev, ki so na voljo prek bearo.si — registracija, plačila, bonusi, zaprtje računa in spori."
 lead: "Z uporabo Bearo Casino igralec sprejema pravila, opisana v tem razdelku."
 slug: "pogoji"
+date: 2026-05-15
+lastmod: 2026-05-15
 ---
 
 Spletna platforma [Bearo Casino](/) (v nadaljevanju "platforma") ponuja storitve spletnega igralništva polnoletnim uporabnikom. Z registracijo, prijavo ali nadaljnjo uporabo storitev uporabnik soglaša s pogoji, opisanimi spodaj, ter z dodatnimi pravili posameznih bonusov, plačilnih metod in iger.

@@ -3,6 +3,8 @@ title: "Odgovorno igranje"
 description: "Smernice odgovornega igranja, orodja za omejitve in dostopne informacije za igralce, ki želijo ohraniti zdrav odnos do igre."
 lead: "Igre na srečo so namenjene zabavi. Bearo.si vgrajuje orodja, ki igralcem pomagajo ostati v okviru lastnih meja."
 slug: "odgovorno-igranje"
+date: 2026-05-15
+lastmod: 2026-05-15
 ---
 
 Igre na srečo so namenjene razvedrilu, ne pa kot način reševanja finančnih težav ali kot vir prihodka. Portal [Bearo Casino](/) spletnim igralcem pomaga ohraniti zdrav odnos do igre prek vrste vgrajenih orodij, jasnih pravil in dostopnih informacij. Vse, kar je opisano v nadaljevanju, je del osnovne ponudbe na Bearo.si in velja za vse registrirane uporabnike, ki so dopolnili 18 let in bivajo na ozemljih, kjer je spletno igralništvo zakonito.

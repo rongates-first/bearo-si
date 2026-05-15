@@ -4,6 +4,12 @@
 {{- if eq .File.BaseFileName "pravila-bonusov"   -}}{{- $eyebrow = "Bonusi"             -}}{{- end -}}
 {{- if eq .File.BaseFileName "pogoji"            -}}{{- $eyebrow = "Pravno"             -}}{{- end -}}
 {{- if eq .File.BaseFileName "zasebnost"         -}}{{- $eyebrow = "Pravno"             -}}{{- end -}}
+{{/* Date fallbacks: if a content file has no `date`/`lastmod` in front
+     matter, Hugo's .Date is the zero value (0001-01-01) which is invalid
+     for schema.org. Fall back to the build time so the JSON-LD always
+     carries a sensible date. */}}
+{{- $pub := cond .Date.IsZero now .Date -}}
+{{- $mod := cond .Lastmod.IsZero $pub .Lastmod -}}
 
 <article class="page">
   <div class="page__bg" aria-hidden="true">
@@ -57,37 +63,37 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": {{ .Title | jsonify }},
-  "description": {{ (.Description | default .Summary | default site.Params.description) | jsonify }},
-  "datePublished": {{ (.Date.Format "2006-01-02") | jsonify }},
-  "dateModified": {{ (.Lastmod.Format "2006-01-02") | jsonify }},
+  "headline": {{ .Title | jsonify | safeHTML }},
+  "description": {{ (.Description | default .Summary | default site.Params.description) | jsonify | safeHTML }},
+  "datePublished": {{ ($pub.Format "2006-01-02") | jsonify | safeHTML }},
+  "dateModified": {{ ($mod.Format "2006-01-02") | jsonify | safeHTML }},
   "inLanguage": "sl-SI",
   "isPartOf": {
     "@type": "WebSite",
-    "name": {{ site.Title | jsonify }},
-    "url": {{ site.BaseURL | jsonify }}
+    "name": {{ site.Title | jsonify | safeHTML }},
+    "url": {{ site.BaseURL | jsonify | safeHTML }}
   },
   "author": {
     "@type": "Organization",
     "name": "Bearo Casino",
-    "url": {{ site.BaseURL | jsonify }}
+    "url": {{ site.BaseURL | jsonify | safeHTML }}
   },
   "publisher": {
     "@type": "Organization",
     "name": "Bearo Casino",
-    "url": {{ site.BaseURL | jsonify }},
+    "url": {{ site.BaseURL | jsonify | safeHTML }},
     "logo": {
       "@type": "ImageObject",
-      "url": {{ (absURL "img/logo-bearo.png") | jsonify }},
+      "url": {{ (absURL "img/logo-bearo.png") | jsonify | safeHTML }},
       "width": 1024,
       "height": 1024
     }
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": {{ .Permalink | jsonify }}
+    "@id": {{ .Permalink | jsonify | safeHTML }}
   },
-  "image": {{ (absURL site.Params.ogImage) | jsonify }}
+  "image": {{ (absURL site.Params.ogImage) | jsonify | safeHTML }}
 }
 </script>
 <script type="application/ld+json">
@@ -99,13 +105,13 @@
       "@type": "ListItem",
       "position": 1,
       "name": "Domov",
-      "item": {{ site.BaseURL | jsonify }}
+      "item": {{ site.BaseURL | jsonify | safeHTML }}
     },
     {
       "@type": "ListItem",
       "position": 2,
-      "name": {{ .Title | jsonify }},
-      "item": {{ .Permalink | jsonify }}
+      "name": {{ .Title | jsonify | safeHTML }},
+      "item": {{ .Permalink | jsonify | safeHTML }}
     }
   ]
 }

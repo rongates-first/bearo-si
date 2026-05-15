@@ -3,6 +3,8 @@ title: "Pravila bonusov"
 description: "Pogoji stav, časovna veljavnost in omejitve vsakega bonus paketa na Bearo.si — vse, kar je treba vedeti pred aktivacijo."
 lead: "Vsak Bearo bonus ima jasno določene pogoje. Tukaj so zbrani na enem mestu."
 slug: "pravila-bonusov"
+date: 2026-05-15
+lastmod: 2026-05-15
 ---
 
 Bonus paketi na portalu [Bearo Casino](/) so del prvega vtisa novih igralcev in del nadaljnje izkušnje obstoječih. Vsak paket ima jasno določene zneske, časovno veljavnost, mnogokratnik stav in delež posameznih iger pri izpolnjevanju pogojev — vse skupno na enem mestu v tem dokumentu. Bonuse lahko aktivira samo igralec, ki je dopolnil 18 let in opravil Bearo registracijo na Bearo.si.

@@ -3,6 +3,8 @@ title: "Politika zasebnosti"
 description: "Kako Bearo Casino zbira, uporablja in ščiti osebne podatke igralcev v skladu z GDPR in slovensko zakonodajo."
 lead: "Osebni podatki igralcev ostajajo zaščiteni. Bearo.si jih obravnava v skladu z GDPR in slovensko zakonodajo o varstvu podatkov."
 slug: "zasebnost"
+date: 2026-05-15
+lastmod: 2026-05-15
 ---
 
 Portal [Bearo Casino](/) osebne podatke obdeluje v skladu s **Splošno uredbo o varstvu podatkov (GDPR)** in slovensko zakonodajo o varstvu osebnih podatkov. Ta politika pojasnjuje, kateri podatki se zbirajo, zakaj se zbirajo, komu se posredujejo in kakšne pravice ima uporabnik nad svojimi podatki na Bearo.si.
