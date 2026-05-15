@@ -1,0 +1,16 @@
+# Hugo build output — must NOT be committed.
+# Cloudflare Pages (or `hugo --minify` locally) regenerates this on deploy.
+# Committing it caused stale localhost:1313 URLs to ship to production.
+/public/
+/resources/_gen/
+.hugo_build.lock
+
+# Hugo / dev
+hugo_stats.json
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
