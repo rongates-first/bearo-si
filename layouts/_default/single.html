@@ -102,10 +102,13 @@
     (dict "@type" "ListItem" "position" 2 "name" .Title "item" .Permalink)
   )
 -}}
-<script type="application/ld+json">
-{{ $article | jsonify (dict "indent" "  ") | safeHTML }}
-</script>
-<script type="application/ld+json">
-{{ $crumbs | jsonify (dict "indent" "  ") | safeHTML }}
-</script>
+{{/* Emit the WHOLE <script> element as one safeHTML string. If only the
+     inner JSON is passed through safeHTML, html/template still treats the
+     <script> body as a JS context and wraps the JSON in quotes as a JS
+     string literal. Building the entire tag as one trusted HTML blob
+     sidesteps the context machinery completely. */}}
+{{- $articleJSON := $article | jsonify (dict "indent" "  ") -}}
+{{- $crumbsJSON  := $crumbs  | jsonify (dict "indent" "  ") -}}
+{{ printf `<script type="application/ld+json">%s</script>` $articleJSON | safeHTML }}
+{{ printf `<script type="application/ld+json">%s</script>` $crumbsJSON | safeHTML }}
 {{ end }}

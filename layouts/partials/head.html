@@ -184,19 +184,13 @@
       "acceptedAnswer" (dict "@type" "Answer" "text" "Privzeti mnogokratnik za bonuse dobrodošlice je x35, ki velja na vsoto pologa in bonusa. Pri kampanjah z drugimi pogoji je mnogokratnik naveden v podrobnostih posameznega bonusa."))
   )
 -}}
-<script type="application/ld+json">
-{{ $website | jsonify (dict "indent" "  ") | safeHTML }}
-</script>
-<script type="application/ld+json">
-{{ $organization | jsonify (dict "indent" "  ") | safeHTML }}
-</script>
-<script type="application/ld+json">
-{{ $webpage | jsonify (dict "indent" "  ") | safeHTML }}
-</script>
-<script type="application/ld+json">
-{{ $breadcrumb | jsonify (dict "indent" "  ") | safeHTML }}
-</script>
-<script type="application/ld+json">
-{{ $faq | jsonify (dict "indent" "  ") | safeHTML }}
-</script>
+{{/* Emit each <script> element as one safeHTML string — passing only the
+     inner JSON through safeHTML still leaves html/template in JS context
+     and it wraps the JSON as a quoted JS string. The whole-tag-as-one-blob
+     approach avoids the context machinery entirely. */}}
+{{ printf `<script type="application/ld+json">%s</script>` ($website      | jsonify (dict "indent" "  ")) | safeHTML }}
+{{ printf `<script type="application/ld+json">%s</script>` ($organization | jsonify (dict "indent" "  ")) | safeHTML }}
+{{ printf `<script type="application/ld+json">%s</script>` ($webpage      | jsonify (dict "indent" "  ")) | safeHTML }}
+{{ printf `<script type="application/ld+json">%s</script>` ($breadcrumb   | jsonify (dict "indent" "  ")) | safeHTML }}
+{{ printf `<script type="application/ld+json">%s</script>` ($faq          | jsonify (dict "indent" "  ")) | safeHTML }}
 {{ end }}
